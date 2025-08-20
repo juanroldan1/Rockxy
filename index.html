@@ -1,41 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockxy - Catálogo Interactivo</title>
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <script src="funciones/funciones.js"></script>
+</head>
+<body>
+    <!-- Navegación -->
+    <div class="navegador">
+        <header id="header">
+            <h1>Rockxy</h1>
+            <p>Bar de Rock</p>
+        </header>
+        <nav class="barraNavegacion">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#categorias">Categorías</a></li>
+                <li><a href="carritoCompras.html">Carrito de Compras</a></li>
+                <li><a href="#equipo">Nuestro Equipo</a></li>
+            </ul>
+        </nav>
+    </div>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Rockxy</title>
-        <script src="funciones/funciones.js"></script>
-        <link rel="stylesheet" href="estilos/estilos.css">
-    </head>
-        <body>
-            <div class="navegador">
-                <header id="header">Rockxy</header>
-                <nav class="barraNavegación">
-                    <ul>
-                        <a href="#inicio">Inicio</a>
-                        <a href="#catalogo">Nuestro catalogo</a>
-                        <a href="carritoCompras.html">Carrito de compras</a>
-                        
-                        
-                    </ul>
-                </nav>
+    <main>
+        <!-- Página de inicio -->
+        <section id="inicio">
+            <div class="presentacion">
+                <h2>Bienvenidos a Rockxy</h2>
+                <h3>El mejor bar de rock de la ciudad</h3>
+                <p>En Rockxy vivimos y respiramos rock. Somos más que un bar, somos un santuario para los amantes de la música rock donde cada noche es una experiencia única.</p>
+                
+                <div class="propuesta-comercial">
+                    <h4>Nuestra Propuesta</h4>
+                    <p>Ofrecemos una experiencia gastronómica completa con la mejor música rock en vivo, cocteles temáticos inspirados en grandes bandas, comida deliciosa y un ambiente auténtico que te transportará al corazón del rock and roll.</p>
+                    <p>Disfruta de nuestros servicios tanto en el local como con entrega a domicilio para que no te pierdas de la experiencia Rockxy.</p>
+                </div>
             </div>
-            <seccion id="inicio">
-                
-            </seccion>
-                
-            <section id="catalogo">
+        </section>
 
-                <button class="AñadirCarrito">Añadir al carrito de compras</button>
-            </section>
+        <!-- Categorías de productos -->
+        <section id="categorias">
+            <div class="categorias-container">
+                <h2>Nuestras Categorías</h2>
                 
+                <!-- Categoría Bebidas -->
+                <div class="categoria">
+                    <h3>Bebidas</h3>
+                    <div class="productos-grid">
+                        <div class="producto">
+                            <img src="" alt="Producto 1">
+                            <h4>Producto 1</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-1" data-precio="0">Añadir al carrito</button>
+                        </div>
+                        
+                        <div class="producto">
+                            <img src="" alt="Producto 2">
+                            <h4>Producto 2</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-2" data-precio="0">Añadir al carrito</button>
+                        </div>
+                        
+                        <div class="producto">
+                            <img src="" alt="Producto 3">
+                            <h4>Producto 3</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-3" data-precio="0">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Categoría Comida -->
+                <div class="categoria">
+                    <h3>Comida</h3>
+                    <div class="productos-grid">
+                        <div class="producto">
+                            <img src="" alt="Producto 4">
+                            <h4>Producto 4</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-4" data-precio="0">Añadir al carrito</button>
+                        </div>
+                        
+                        <div class="producto">
+                            <img src="" alt="Producto 5">
+                            <h4>Producto 5</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-5" data-precio="0">Añadir al carrito</button>
+                        </div>
+                        
+                        <div class="producto">
+                            <img src="" alt="Producto 6">
+                            <h4>Producto 6</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-6" data-precio="0">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
 
-                
-                
-                
-        </body>
-        </html>
+                <!-- Categoría Postres -->
+                <div class="categoria">
+                    <h3>Postres</h3>
+                    <div class="productos-grid">
+                        <div class="producto">
+                            <img src="" alt="Producto 7">
+                            <h4>Producto 7</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-7" data-precio="0">Añadir al carrito</button>
+                        </div>
+                        
+                        <div class="producto">
+                            <img src="" alt="Producto 8">
+                            <h4>Producto 8</h4>
+                            <p>Descripción del producto</p>
+                            <span class="precio">$0</span>
+                            <button class="AñadirCarrito" data-producto="producto-8" data-precio="0">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        
+       
+
+    <footer>
+         <section id="equipo">
+            <div class="equipo-container">
+                <h2>Nuestro Equipo Desarrollador</h2>
+                <div class="miembros-equipo">
+                    <div class="miembro">
+                        <h3>Juan Davis Sanchez Roldán</h3>
+                        <p>Código: 0000340321</p>
+                        <p>Desarrollador Frontend</p>
+                    </div>
+                    
+                    <div class="miembro">
+                        <h3>Felipe Franco</h3>
+                        <p>Código: 272153</p>
+                        <p>Desarrollador Backend</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="footer-container">
+            <p></p>
+            <p>Proyecto de Desarrollo Web - Corte 1</p>
+        </div>
+    </footer>
+</body>
+</html>
             
                 
 
