@@ -1,7 +1,7 @@
 //Dom
 document.addEventListener('DOMContentLoaded',function(){
     const agregarCarrito = this.getElementsByClassName("AñadirCarrito");
-
+    
 
 
     //Variables de estado
