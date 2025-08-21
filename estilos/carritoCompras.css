@@ -246,3 +246,27 @@ section {
     color: #ffa502;                    /* Color naranja/dorado */
     margin-bottom: 1rem;               /* Espacio debajo */
 }
+
+/*Diseño responsivo moviles*/
+@media (max-width: 480px) {
+    .barraNavegacion ul {
+        flex-direction: column;        /* Navegación vertical */
+        gap: 0.5rem;                   /* Poco espacio entre elementos */
+    }
+    
+    #header h1 {
+        font-size: 1.8rem;             /* Título aún más pequeño */
+    }
+    
+    main {
+        margin-top: 160px;             /* Más margen por navegación vertical */
+    }
+    
+    .presentacion h2 {
+        font-size: 1.8rem;             /* Título principal más pequeño */
+    }
+    
+    .presentacion h3 {
+        font-size: 1.2rem;             /* Subtítulo más pequeño */
+    }
+}
