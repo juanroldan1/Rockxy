@@ -2,412 +2,361 @@
    RESET Y CONFIGURACIÓN BASE
    ======================================== */
 * {
-    margin: 0;              /* Elimina márgenes por defecto de todos los elementos */
-    padding: 0;             /* Elimina padding por defecto de todos los elementos */
-    box-sizing: border-box; /* Incluye border y padding en el ancho total del elemento */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;  /* Fuente principal del sitio */
-    background-color: #1a1a1a;         /* Color de fondo oscuro (temática rock) */
-    color: #ffffff;                     /* Color de texto blanco por defecto */
-    line-height: 1.6;                  /* Espaciado entre líneas para mejor legibilidad */
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
 /* ========================================
    SECCIÓN NAVEGACIÓN
    ======================================== */
 .navegador {
-    position: fixed;                    /* Se mantiene fijo al hacer scroll */
-    top: 0;                            /* Pegado al top de la pantalla */
-    width: 100%;                       /* Ocupa todo el ancho */
-    z-index: 1000;                     /* Se mantiene por encima de otros elementos */
-    background-color: rgba(0, 0, 0, 0.95); /* Fondo negro semi-transparente */
-    backdrop-filter: blur(10px);       /* Efecto blur en el fondo */
-    border-bottom: 3px solid #ff4757;  /* Borde rojo inferior característico */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid #ff4757;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 #header {
-    text-align: center;                /* Centra el contenido */
-    padding: 1rem;                     /* Espaciado interno */
-    background: linear-gradient(135deg, #1a1a1a, #2d2d2d); /* Gradiente de fondo */
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
 }
 
 #header h1 {
-    font-size: 2.5rem;                 /* Tamaño grande para el título */
-    font-weight: bold;                 /* Texto en negrita */
-    color: #ff4757;                    /* Color rojo característico */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra del texto para resaltar */
-    margin-bottom: 0.2rem;             /* Pequeño margen inferior */
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff4757;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 0.2rem;
 }
 
 #header p {
-    font-size: 1rem;                   /* Tamaño normal para subtítulo */
-    color: #cccccc;                    /* Color gris claro */
-    font-style: italic;                /* Texto en cursiva */
+    font-size: 1rem;
+    color: #cccccc;
+    font-style: italic;
 }
 
 .barraNavegacion {
-    padding: 0.8rem 0;                 /* Espaciado vertical */
-    background-color: rgba(45, 45, 45, 0.9); /* Fondo gris oscuro semi-transparente */
+    padding: 0.8rem 0;
+    background-color: rgba(45, 45, 45, 0.9);
 }
 
 .barraNavegacion ul {
-    display: flex;                     /* Elementos en línea horizontal */
-    justify-content: center;           /* Centra los elementos */
-    gap: 2rem;                         /* Espacio entre elementos */
-    list-style: none;                 /* Quita las viñetas de la lista */
-    flex-wrap: wrap;                   /* Permite que se acomoden en varias líneas */
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    flex-wrap: wrap;
 }
 
 .barraNavegacion a {
-    color: #ffffff;                    /* Color blanco para los enlaces */
-    text-decoration: none;             /* Quita el subrayado */
-    padding: 0.8rem 1.5rem;           /* Espaciado interno */
-    border-radius: 25px;               /* Bordes redondeados */
-    font-weight: 500;                  /* Texto semi-bold */
-    transition: all 0.3s ease;        /* Transición suave para animaciones */
-    position: relative;                /* Para efectos de hover */
-    overflow: hidden;                  /* Esconde elementos que se salgan */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .barraNavegacion a:hover {
-    background: linear-gradient(45deg, #ff4757, #ff6b7a); /* Gradiente rojo al pasar mouse */
-    transform: translateY(-2px);      /* Mueve el elemento hacia arriba */
-    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4); /* Sombra roja al hacer hover */
-}
-
-/* Efecto de brillo al pasar el mouse */
-
-
-.barraNavegacion a:hover::before {
-    left: 100%;                        /* Se mueve atravesando el elemento */
+    background: linear-gradient(45deg, #ff4757, #ff6b7a);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
 /* ========================================
    CONFIGURACIÓN GENERAL DE SECCIONES
    ======================================== */
 main {
-    margin-top: 140px;                 /* Espacio para que no se tape con el header fijo */
+    margin-top: 140px;
 }
 
 section {
-    min-height: 100vh;                 /* Cada sección ocupa mínimo toda la pantalla */
-    padding: 4rem 2rem;                /* Espaciado interno generoso */
-    display: flex;                     /* Para centrar contenido */
-    align-items: center;               /* Centra verticalmente */
-    justify-content: center;           /* Centra horizontalmente */
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ========================================
    SECCIÓN INICIO
    ======================================== */
 #inicio {
-    /* Fondo con gradiente superpuesto para oscurecer */
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                 linear-gradient(45deg, #1a1a1a, #2d2d2d, #1a1a1a);
-    text-align: center;                /* Todo el contenido centrado */
+    text-align: center;
 }
 
 .presentacion h2 {
-    font-size: 3rem;                   /* Título principal muy grande */
-    color: #ff4757;                    /* Color rojo característico */
-    margin-bottom: 1rem;               /* Espacio debajo */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Sombra fuerte para resaltar */
+    font-size: 3rem;
+    color: #ff4757;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .presentacion h3 {
-    font-size: 1.8rem;                 /* Subtítulo grande */
-    color: #ffa502;                    /* Color naranja/dorado */
-    margin-bottom: 2rem;               /* Más espacio debajo */
-    font-weight: 300;                  /* Texto más delgado */
+    font-size: 1.8rem;
+    color: #ffa502;
+    margin-bottom: 2rem;
+    font-weight: 300;
 }
 
 .presentacion p {
-    font-size: 1.2rem;                 /* Texto más grande que normal */
-    max-width: 800px;                  /* Limita el ancho para mejor legibilidad */
-    margin: 0 auto 2rem;               /* Centrado con margen automático */
-    color: #cccccc;                    /* Color gris claro */
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #cccccc;
 }
 
 .propuesta-comercial {
-    background: rgba(255, 71, 87, 0.1); /* Fondo rojo muy transparente */
-    padding: 2rem;                     /* Espaciado interno */
-    border-radius: 15px;               /* Bordes muy redondeados */
-    border: 1px solid #ff4757;         /* Borde rojo sólido */
-    margin-top: 2rem;                  /* Espacio arriba */
-    max-width: 900px;                  /* Ancho máximo */
-    margin-left: auto;                 /* Centrado automático */
+    background: rgba(255, 71, 87, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #ff4757;
+    margin-top: 2rem;
+    max-width: 900px;
+    margin-left: auto;
     margin-right: auto;
 }
 
 .propuesta-comercial h4 {
-    font-size: 1.5rem;                 /* Título de sección */
-    color: #ff4757;                    /* Color rojo */
-    margin-bottom: 1rem;               /* Espacio debajo */
+    font-size: 1.5rem;
+    color: #ff4757;
+    margin-bottom: 1rem;
 }
 
 .propuesta-comercial p {
-    margin-bottom: 1rem;               /* Espacio entre párrafos */
-    color: #dddddd;                    /* Color gris más claro */
+    margin-bottom: 1rem;
+    color: #dddddd;
 }
 
 /* ========================================
    SECCIÓN CATEGORÍAS (PRODUCTOS)
    ======================================== */
 #categorias {
-    background: linear-gradient(135deg, #2d2d2d, #1a1a1a); /* Gradiente de fondo */
-    align-items: flex-start;           /* Alineación al inicio (arriba) */
-    min-height: auto;                  /* Altura automática según contenido */
-    padding: 6rem 2rem;                /* Más espaciado vertical */
+    background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+    align-items: flex-start;
+    min-height: auto;
+    padding: 6rem 2rem;
 }
 
 .categorias-container {
-    max-width: 1200px;                 /* Ancho máximo del contenedor */
-    width: 100%;                       /* Ocupa todo el ancho disponible */
+    max-width: 1200px;
+    width: 100%;
 }
 
 .categorias-container h2 {
-    font-size: 2.5rem;                 /* Título principal grande */
-    text-align: center;                /* Centrado */
-    color: #ff4757;                    /* Color rojo */
-    margin-bottom: 3rem;               /* Espacio generoso debajo */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra del texto */
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ff4757;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .categoria {
-    margin-bottom: 4rem;               /* Espacio entre categorías */
+    margin-bottom: 4rem;
 }
 
 .categoria h3 {
-    font-size: 2rem;                   /* Título de categoría grande */
-    color: #ffa502;                    /* Color naranja/dorado */
-    margin-bottom: 2rem;               /* Espacio debajo */
-    text-align: center;                /* Centrado */
-    border-bottom: 2px solid #ff4757;  /* Línea roja debajo */
-    padding-bottom: 1rem;              /* Espacio entre texto y línea */
+    font-size: 2rem;
+    color: #ffa502;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .productos-grid {
-    display: grid;                     /* Diseño en cuadrícula */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas automáticas, mín 280px */
-    gap: 2rem;                         /* Espacio entre elementos */
-    margin-bottom: 3rem;               /* Espacio debajo del grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
 }
 
 .producto {
-    background: linear-gradient(145deg, #333333, #2a2a2a); /* Gradiente de fondo */
-    border-radius: 15px;               /* Bordes redondeados */
-    padding: 1.5rem;                   /* Espaciado interno */
-    text-align: center;                /* Contenido centrado */
-    transition: all 0.3s ease;        /* Transición suave para animaciones */
-    border: 1px solid #444444;         /* Borde gris oscuro */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    background: #2d2d2d;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .producto:hover {
-    transform: translateY(-5px);       /* Se eleva al pasar mouse */
-    box-shadow: 0 10px 25px rgba(255, 71, 87, 0.2); /* Sombra roja más fuerte */
-    border-color: #ff4757;             /* Borde se vuelve rojo */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
 }
 
 .producto img {
-    width: 100%;                       /* Ocupa todo el ancho */
-    height: 200px;                     /* Altura fija */
-    object-fit: cover;                 /* Mantiene proporción, recorta si necesario */
-    border-radius: 10px;               /* Bordes redondeados */
-    margin-bottom: 1rem;               /* Espacio debajo */
-    background-color: #444444;         /* Color de fondo para placeholder */
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 .producto h4 {
-    font-size: 1.3rem;                 /* Tamaño del nombre del producto */
-    color: #ffffff;                    /* Color blanco */
-    margin-bottom: 0.8rem;             /* Espacio debajo */
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
 }
 
 .producto p {
-    color: #cccccc;                    /* Color gris para descripción */
-    margin-bottom: 1rem;               /* Espacio debajo */
-    font-size: 0.9rem;                 /* Texto un poco más pequeño */
+    font-size: 0.9rem;
+    color: #999999;
+    margin-bottom: 1rem;
 }
 
-.precio {
-    display: block;                    /* Ocupa toda la línea */
-    font-size: 1.5rem;                 /* Tamaño grande para el precio */
-    font-weight: bold;                 /* Texto en negrita */
-    color: #ffa502;                    /* Color naranja/dorado */
-    margin-bottom: 1rem;               /* Espacio debajo */
+.producto .precio {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ff4757;
+    margin-bottom: 1.5rem;
 }
 
 .AñadirCarrito {
-    background: linear-gradient(45deg, #ff4757, #ff6b7a); /* Gradiente rojo */
-    color: white;                      /* Texto blanco */
-    border: none;                      /* Sin borde */
-    padding: 0.8rem 1.5rem;            /* Espaciado interno */
-    border-radius: 25px;               /* Bordes muy redondeados */
-    font-size: 1rem;                   /* Tamaño normal */
-    font-weight: 600;                  /* Texto semi-bold */
-    cursor: pointer;                   /* Cambia cursor a manita */
-    transition: all 0.3s ease;        /* Transición suave */
-    text-transform: uppercase;         /* Texto en mayúsculas */
-    letter-spacing: 1px;               /* Espaciado entre letras */
+    background: linear-gradient(45deg, #ff4757, #ff6b7a);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .AñadirCarrito:hover {
-    background: linear-gradient(45deg, #ff3742, #ff5761); /* Gradiente más oscuro */
-    transform: translateY(-2px);      /* Se eleva ligeramente */
-    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4); /* Sombra roja */
-}
-
-.AñadirCarrito:active {
-    transform: translateY(0);          /* Vuelve a posición normal al clickear */
+    background: linear-gradient(45deg, #ff3742, #ff5761);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
 /* ========================================
-   SECCIÓN EQUIPO DESARROLLADOR
+   SECCIÓN EQUIPO
    ======================================== */
 #equipo {
-    background: linear-gradient(45deg, #1a1a1a, #2d2d2d); /* Gradiente de fondo */
-    min-height: 60vh;                  /* Altura mínima menor que otras secciones */
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    min-height: auto;
 }
 
 .equipo-container {
-    text-align: center;                /* Todo centrado */
-    max-width: 800px;                  /* Ancho máximo */
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
 }
 
 .equipo-container h2 {
-    font-size: 2.5rem;                 /* Título grande */
-    color: #ff4757;                    /* Color rojo */
-    margin-bottom: 3rem;               /* Espacio generoso debajo */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra del texto */
+    font-size: 2.5rem;
+    color: #ff4757;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .miembros-equipo {
-    display: grid;                     /* Diseño en cuadrícula */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas automáticas */
-    gap: 2rem;                         /* Espacio entre tarjetas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
 }
 
 .miembro {
-    background: rgba(255, 71, 87, 0.1); /* Fondo rojo muy transparente */
-    padding: 2rem;                     /* Espaciado interno generoso */
-    border-radius: 15px;               /* Bordes redondeados */
-    border: 1px solid #ff4757;         /* Borde rojo */
-    transition: all 0.3s ease;        /* Transición suave */
+    text-align: center;
+    padding: 1.5rem;
+    background: #2d2d2d;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.miembro:hover {
-    transform: translateY(-5px);       /* Se eleva al pasar mouse */
-    box-shadow: 0 10px 25px rgba(255, 71, 87, 0.2); /* Sombra roja */
+.miembro img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border: 3px solid #ff4757;
 }
 
 .miembro h3 {
-    font-size: 1.3rem;                 /* Nombre del miembro */
-    color: #ffffff;                    /* Color blanco */
-    margin-bottom: 0.5rem;             /* Pequeño espacio debajo */
+    font-size: 1.5rem;
+    color: #ffa502;
+    margin-bottom: 0.5rem;
 }
 
 .miembro p {
-    color: #cccccc;                    /* Color gris para información */
-    margin-bottom: 0.3rem;             /* Pequeño espacio entre líneas */
+    font-size: 1rem;
+    color: #cccccc;
 }
 
 /* ========================================
-   FOOTER (PIE DE PÁGINA)
-   ======================================== */
-footer {
-    background-color: #0f0f0f;         /* Fondo muy oscuro */
-    padding: 2rem;                     /* Espaciado interno */
-    text-align: center;                /* Contenido centrado */
-    border-top: 2px solid #ff4757;     /* Borde rojo superior */
-}
-
-.footer-container p {
-    color: #cccccc;                    /* Color gris claro */
-    margin-bottom: 0.5rem;             /* Pequeño espacio entre líneas */
-}
-
-/* ========================================
-   DISEÑO RESPONSIVO - TABLETS
+   RESPONSIVE DESIGN (Media Queries)
    ======================================== */
 @media (max-width: 768px) {
     #header h1 {
-        font-size: 2rem;               /* Título más pequeño en tablet */
+        font-size: 2rem;
     }
-    
     .barraNavegacion ul {
-        gap: 1rem;                     /* Menos espacio entre enlaces */
-        padding: 0 1rem;               /* Espaciado lateral */
+        gap: 1rem;
     }
-    
     .barraNavegacion a {
-        padding: 0.6rem 1rem;          /* Botones más pequeños */
-        font-size: 0.9rem;             /* Texto más pequeño */
+        padding: 0.6rem 1rem;
     }
-    
-    main {
-        margin-top: 120px;             /* Menos margen superior */
-    }
-    
-    .presentacion h2 {
-        font-size: 2.2rem;             /* Título más pequeño */
-    }
-    
-    .presentacion h3 {
-        font-size: 1.4rem;             /* Subtítulo más pequeño */
-    }
-    
-    .presentacion p {
-        font-size: 1rem;               /* Texto normal */
-    }
-    
-    .categorias-container h2 {
-        font-size: 2rem;               /* Título de categorías más pequeño */
-    }
-    
-    .categoria h3 {
-        font-size: 1.6rem;             /* Títulos de categoría más pequeños */
-    }
-    
     .productos-grid {
-        grid-template-columns: 1fr;    /* Una sola columna en móvil */
-        gap: 1.5rem;                   /* Menos espacio entre productos */
-    }
-    
-    .propuesta-comercial {
-        padding: 1.5rem;               /* Menos espaciado interno */
-    }
-    
-    section {
-        padding: 2rem 1rem;            /* Menos espaciado en secciones */
+        grid-template-columns: 1fr;
     }
 }
 
-
-   /*DISEÑO RESPONSIVO - MÓVILES*/
-   
 @media (max-width: 480px) {
-    .barraNavegacion ul {
-        flex-direction: column;        /* Navegación vertical */
-        gap: 0.5rem;                   /* Poco espacio entre elementos */
-    }
-    
     #header h1 {
-        font-size: 1.8rem;             /* Título aún más pequeño */
+        font-size: 1.8rem;
     }
-    
-    main {
-        margin-top: 160px;             /* Más margen por navegación vertical */
+    #header p {
+        font-size: 0.8rem;
     }
-    
+    .barraNavegacion ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .barraNavegacion a {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    section {
+        padding: 2rem 1rem;
+    }
     .presentacion h2 {
-        font-size: 1.8rem;             /* Título principal más pequeño */
+        font-size: 2rem;
     }
-    
     .presentacion h3 {
-        font-size: 1.2rem;             /* Subtítulo más pequeño */
+        font-size: 1.5rem;
     }
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #0d0d0d;
+    color: #555555;
+    border-top: 1px solid #333333;
+    font-size: 0.9rem;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras - Rockxy</title>
     <link rel="stylesheet" href="estilos/carritoCompras.css">
+        <script src="funciones/funciones.js"></script>
 </head>
 <body>
     <div class="navegador">
@@ -26,41 +27,32 @@
         <div class="carrito-container">
             <h1>Tu Carrito de Compras</h1>
             
-            <!-- Mensaje cuando el carrito está vacío -->
             <div id="carrito-vacio" class="carrito-vacio">
                 <h2>No tienes ningún elemento en el carrito</h2>
                 <p>Agrega algunos productos desde nuestro catálogo</p>
-                <a href="index.html#categorias" class="btn-volver">Ver Productos</a>
+                <a href="index.html#categorias" class="btn-volver">Ver productos</a>
             </div>
-            
-            <!-- Contenedor de productos del carrito -->
-            <div id="carrito-contenido" class="carrito-contenido" style="display: none;">
+
+            <div id="carrito-con-contenido" class="carrito-contenido" style="display: none;">
                 <div class="carrito-header">
-                    <h2>Productos en tu carrito</h2>
-                    <button id="vaciar-carrito" class="btn-vaciar">Vaciar Carrito</button>
+                    <h2>Productos en el carrito</h2>
+                    <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
                 </div>
-                
-                <!-- Lista de productos -->
-                <div id="lista-productos" class="lista-productos">
-                    <!-- Los productos se insertarán aquí dinámicamente -->
-                </div>
-                
-                <!-- Total del carrito -->
-                <div class="carrito-total">
-                    <div class="total-info">
-                        <p>Total de productos: <span id="cantidad-total">0</span></p>
-                        <p class="precio-total">Total: $<span id="precio-total">0</span></p>
+
+                <div class="lista-productos" id="lista-productos">
                     </div>
-                    <div class="acciones-carrito">
-                        <button id="continuar-comprando" class="btn-continuar">Continuar Comprando</button>
-                        <button id="proceder-pago" class="btn-pagar">Proceder al Pago</button>
-                    </div>
+                
+                <div class="carrito-resumen">
+                    <p>Total a pagar:</p>
+                    <p class="total-monto">$<span id="total-carrito">0.00</span></p>
+                    <button class="btn-finalizar" onclick="enviarAlServidor()">Finalizar Compra</button>
                 </div>
             </div>
         </div>
     </main>
 
-    <script src="funciones/funciones.js"></script>
-    <script src="funciones/carritoUI.js"></script>
+    <footer>
+        <p>&copy; 2024 Rockxy.</p>
+    </footer>
 </body>
 </html>
