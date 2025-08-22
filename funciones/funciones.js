@@ -29,7 +29,7 @@ function actualizarContadorCarrito() {
     }
 }
 
-// ========== 1. AÑADIR PRODUCTO ==========
+// AÑADIR PRODUCTO
 function añadirAlCarrito(productoId, precio, nombre) {
     const productoExistente = carritoCompras.find(item => item.id === productoId);
     
@@ -52,7 +52,7 @@ function añadirAlCarrito(productoId, precio, nombre) {
     mostrarProductosEnCarrito(); // Llama a esta función para que se actualice la vista
 }
 
-// ========== 2. ELIMINAR PRODUCTO ==========
+//ELIMINAR PRODUCTO
 function eliminarDelCarrito(productoId) {
     const indiceProducto = carritoCompras.findIndex(item => item.id === productoId);
     
@@ -83,7 +83,7 @@ function reducirCantidad(productoId) {
     }
 }
 
-// ========== 3. CALCULAR TOTAL DEL CARRITO ==========
+//CALCULAR TOTAL DEL CARRITO
 function calcularTotalCarrito() {
     let totalGeneral = 0;
     
@@ -109,7 +109,7 @@ function vaciarCarrito() {
     }
 }
 
-// ========== 4. ENVÍO AL SERVIDOR ==========
+//ENVÍO AL SERVIDOR
 function enviarAlServidor() {
     if (carritoCompras.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
@@ -148,7 +148,7 @@ function enviarAlServidor() {
     });
 }
 
-// ========== MOSTRAR PRODUCTOS EN LA PÁGINA DEL CARRITO ==========
+//MOSTRAR PRODUCTOS EN LA PÁGINA DEL CARRITO
 function mostrarProductosEnCarrito() {
     const listaProductos = document.getElementById('lista-productos');
     const carritoVacio = document.getElementById('carrito-vacio');
