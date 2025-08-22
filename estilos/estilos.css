@@ -1,6 +1,4 @@
-/* ========================================
-   RESET Y CONFIGURACIÓN BASE
-   ======================================== */
+/*RESET Y CONFIGURACIÓN BASE*/
 * {
     margin: 0;
     padding: 0;
@@ -14,9 +12,7 @@ body {
     line-height: 1.6;
 }
 
-/* ========================================
-   SECCIÓN NAVEGACIÓN
-   ======================================== */
+/*SECCIÓN NAVEGACIÓN*/
 .navegador {
     position: fixed;
     top: 0;
@@ -78,9 +74,7 @@ body {
     box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
-/* ========================================
-   CONFIGURACIÓN GENERAL DE SECCIONES
-   ======================================== */
+/*CONFIGURACIÓN GENERAL DE SECCIONES*/
 main {
     margin-top: 140px;
 }
@@ -93,9 +87,7 @@ section {
     justify-content: center;
 }
 
-/* ========================================
-   SECCIÓN INICIO
-   ======================================== */
+/* SECCIÓN INICIO*/
 #inicio {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                 linear-gradient(45deg, #1a1a1a, #2d2d2d, #1a1a1a);
@@ -145,9 +137,7 @@ section {
     color: #dddddd;
 }
 
-/* ========================================
-   SECCIÓN CATEGORÍAS (PRODUCTOS)
-   ======================================== */
+/*SECCIÓN CATEGORÍAS (PRODUCTOS)*/
 #categorias {
     background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
     align-items: flex-start;
@@ -248,9 +238,7 @@ section {
     box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
-/* ========================================
-   SECCIÓN EQUIPO
-   ======================================== */
+/*SECCIÓN EQUIPO*/
 #equipo {
     background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
     min-height: auto;
@@ -304,9 +292,7 @@ section {
     color: #cccccc;
 }
 
-/* ========================================
-   RESPONSIVE DESIGN (Media Queries)
-   ======================================== */
+/*Diseño responsivo*/
 @media (max-width: 768px) {
     #header h1 {
         font-size: 2rem;

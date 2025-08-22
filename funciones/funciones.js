@@ -119,7 +119,7 @@ function enviarAlServidor() {
     // Aquí se simula el envío de datos a un servidor
     console.log("Enviando datos del carrito al servidor:", JSON.stringify(carritoCompras, null, 2));
 
-    // Ejemplo de un endpoint de prueba (puedes reemplazarlo)
+    
     const url = 'https://jsonplaceholder.typicode.com/posts';
 
     fetch(url, {

@@ -1,6 +1,4 @@
-/* ========================================
-   RESET Y CONFIGURACIÓN BASE
-   ======================================== */
+/*RESET Y CONFIGURACIÓN BASE*/
 * {
     margin: 0;
     padding: 0;
@@ -14,9 +12,7 @@ body {
     line-height: 1.6;
 }
 
-/* ========================================
-   NAVEGACIÓN
-   ======================================== */
+/*NAVEGACIÓN*/
 .navegador {
     position: fixed;
     top: 0;
@@ -78,9 +74,7 @@ body {
     box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
-/* ========================================
-   CONTENEDOR PRINCIPAL DEL CARRITO
-   ======================================== */
+/*CONTENEDOR PRINCIPAL DEL CARRITO*/
 main {
     margin-top: 140px;
     min-height: calc(100vh - 140px);
@@ -100,9 +94,7 @@ main {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* ========================================
-   CARRITO VACÍO
-   ======================================== */
+/*CARRITO VACÍO*/
 .carrito-vacio {
     text-align: center;
     padding: 4rem 2rem;
@@ -142,9 +134,7 @@ main {
     box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
-/* ========================================
-   CARRITO CON CONTENIDO
-   ======================================== */
+/*CARRITO CON CONTENIDO*/
 .carrito-contenido {
     background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
     border-radius: 15px;
@@ -184,9 +174,7 @@ main {
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
 }
 
-/* ========================================
-   LISTA DE PRODUCTOS
-   ======================================== */
+/*LISTA DE PRODUCTOS*/
 .lista-productos {
     margin-bottom: 2rem;
     display: flex;
@@ -281,9 +269,7 @@ main {
     color: white;
 }
 
-/* ========================================
-   RESUMEN DEL CARRITO
-   ======================================== */
+/*RESUMEN DEL CARRITO*/
 .carrito-resumen {
     display: flex;
     justify-content: space-between;
@@ -324,9 +310,6 @@ main {
     box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
 }
 
-/* ========================================
-   RESPONSIVE DESIGN (Media Queries)
-   ======================================== */
 @media (max-width: 768px) {
     .producto-carrito {
         flex-direction: column;
