@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <h1>Carrito de compras</h1>
-        <link rel="stylesheet" href="estilos/carritoCompras.css">
-        <script src="funciones/funciones.js"></script>
-    </head>
-
-     <div class="navegador">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Rockxy</title>
+    <link rel="stylesheet" href="estilos/carritoCompras.css">
+</head>
+<body>
+    <div class="navegador">
         <header id="header">
             <h1>Rockxy</h1>
             <p>Bar de Rock</p>
@@ -21,9 +22,45 @@
         </nav>
     </div>
 
-    <body>
+    <main>
+        <div class="carrito-container">
+            <h1>Tu Carrito de Compras</h1>
+            
+            <!-- Mensaje cuando el carrito está vacío -->
+            <div id="carrito-vacio" class="carrito-vacio">
+                <h2>No tienes ningún elemento en el carrito</h2>
+                <p>Agrega algunos productos desde nuestro catálogo</p>
+                <a href="index.html#categorias" class="btn-volver">Ver Productos</a>
+            </div>
+            
+            <!-- Contenedor de productos del carrito -->
+            <div id="carrito-contenido" class="carrito-contenido" style="display: none;">
+                <div class="carrito-header">
+                    <h2>Productos en tu carrito</h2>
+                    <button id="vaciar-carrito" class="btn-vaciar">Vaciar Carrito</button>
+                </div>
+                
+                <!-- Lista de productos -->
+                <div id="lista-productos" class="lista-productos">
+                    <!-- Los productos se insertarán aquí dinámicamente -->
+                </div>
+                
+                <!-- Total del carrito -->
+                <div class="carrito-total">
+                    <div class="total-info">
+                        <p>Total de productos: <span id="cantidad-total">0</span></p>
+                        <p class="precio-total">Total: $<span id="precio-total">0</span></p>
+                    </div>
+                    <div class="acciones-carrito">
+                        <button id="continuar-comprando" class="btn-continuar">Continuar Comprando</button>
+                        <button id="proceder-pago" class="btn-pagar">Proceder al Pago</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-        <h1 id="no_elementos">No tienes ningún elemento en el carrito</h1>
-        
-    </body>
+    <script src="funciones/funciones.js"></script>
+    <script src="funciones/carritoUI.js"></script>
+</body>
 </html>

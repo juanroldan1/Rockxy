@@ -11,7 +11,6 @@
     <!-- Navegación -->
     <div class="navegador">
         <header id="header">
-            <img src="" alt=""> <!--Icono del restaurante-->
             <h1>Rockxy</h1>
             <p>Bar de Rock</p>
         </header>
@@ -19,7 +18,10 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#categorias">Categorías</a></li>
-                <li><a href="carritoCompras.html">Carrito de Compras</a></li>
+                <li><a href="carritoCompras.html">
+                    Carrito de Compras 
+                    <span id="contador-carrito" class="contador-carrito" style="display: none;">0</span>
+                </a></li>
                 <li><a href="#equipo">Nuestro Equipo</a></li>
             </ul>
         </nav>
@@ -46,84 +48,354 @@
             <div class="categorias-container">
                 <h2>Nuestras Categorías</h2>
                 
-                <!-- Categoría Bebidas Sin Alcohol-->
+                <!-- Categoría Cócteles Rock -->
                 <div class="categoria">
-                    <h3>Bebidas Sin Alcohol</h3>
+                    <h3>🍹 Cócteles Rock</h3>
                     <div class="productos-grid">
                         <div class="producto">
-                            <img src="" alt="Producto 1">
-                            <h4>Producto 1</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-1" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=200&fit=crop" alt="Long Island">
+                            <h4>Long Island</h4>
+                            <p>El cóctel más potente de la casa, con 5 licores diferentes. ¡Para los verdaderos rockeros!</p>
+                            <span class="precio">$37.000</span>
+                            <button class="AñadirCarrito" data-producto="long-island" data-precio="37000">Añadir al carrito</button>
                         </div>
                         
                         <div class="producto">
-                            <img src="" alt="Producto 2">
-                            <h4>Producto 2</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-2" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop" alt="Margarita Beer Cereza">
+                            <h4>Margarita Beer Cereza</h4>
+                            <p>Nuestra exclusiva margarita con cerveza y toque de cereza. Refrescante y único.</p>
+                            <span class="precio">$35.000</span>
+                            <button class="AñadirCarrito" data-producto="margarita-beer" data-precio="35000">Añadir al carrito</button>
                         </div>
                         
                         <div class="producto">
-                            <img src="" alt="Producto 3">
-                            <h4>Producto 3</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-3" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=200&fit=crop" alt="Jagger Bomba">
+                            <h4>Jagger Bomba</h4>
+                            <p>Explosivo cóctel con Jägermeister. Perfecto para activar la noche rockera.</p>
+                            <span class="precio">$35.000</span>
+                            <button class="AñadirCarrito" data-producto="jagger-bomba" data-precio="35000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=200&fit=crop" alt="Jagger DRY">
+                            <h4>Jagger DRY</h4>
+                            <p>Versión seca del Jäger, más sofisticado pero igual de potente.</p>
+                            <span class="precio">$30.000</span>
+                            <button class="AñadirCarrito" data-producto="jagger-dry" data-precio="30000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=300&h=200&fit=crop" alt="De La Casa">
+                            <h4>De La Casa</h4>
+                            <p>Nuestra receta secreta. Un cóctel exclusivo que solo encontrarás en Rockxy.</p>
+                            <span class="precio">$30.000</span>
+                            <button class="AñadirCarrito" data-producto="de-la-casa" data-precio="30000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=300&h=200&fit=crop" alt="Gin Tonic">
+                            <h4>Gin Tonic</h4>
+                            <p>Simple, directo y efectivo. Como el mejor rock and roll.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="gin-tonic" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop" alt="Margarita">
+                            <h4>Margarita</h4>
+                            <p>El clásico mexicano que nunca pasa de moda. Tequila, limón y sal.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="margarita" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1481671703460-040cb8a2d909?w=300&h=200&fit=crop" alt="Martini">
+                            <h4>Martini</h4>
+                            <p>Elegante y sofisticado, para los amantes del rock clásico.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="martini" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=300&h=200&fit=crop" alt="Mojito">
+                            <h4>Mojito</h4>
+                            <p>El clásico cubano con menta fresca y actitud rockera.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="mojito" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=200&fit=crop" alt="Cuba Libre">
+                            <h4>Cuba Libre</h4>
+                            <p>Ron, coca cola y limón. La libertad en un vaso.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="cuba-libre" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=300&h=200&fit=crop" alt="Calle 65">
+                            <h4>Calle 65</h4>
+                            <p>Inspirado en las calles bogotanas donde nace el rock.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="calle-65" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop" alt="Dragon Verde">
+                            <h4>Dragon Verde</h4>
+                            <p>Cóctel exótico con un toque verde que despierta los sentidos.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="dragon-verde" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=200&fit=crop" alt="Sunrise">
+                            <h4>Sunrise</h4>
+                            <p>Colores del amanecer después de una noche de rock.</p>
+                            <span class="precio">$28.000</span>
+                            <button class="AñadirCarrito" data-producto="sunrise" data-precio="28000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=300&h=200&fit=crop" alt="Sin Licor">
+                            <h4>Sin Licor</h4>
+                            <p>Para quienes prefieren disfrutar la música sin alcohol.</p>
+                            <span class="precio">$22.000</span>
+                            <button class="AñadirCarrito" data-producto="sin-licor" data-precio="22000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1481671703460-040cb8a2d909?w=300&h=200&fit=crop" alt="Ruso">
+                            <h4>Ruso</h4>
+                            <p>Fuerte como el invierno siberiano. Para rockeros de verdad.</p>
+                            <span class="precio">$15.000</span>
+                            <button class="AñadirCarrito" data-producto="ruso" data-precio="15000">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categoría Bebidas Ancohólicas -->
+                <!-- Categoría Licores y Shots -->
                 <div class="categoria">
-                    <h3>Bebidas Alcohólicas</h3>
+                    <h3>🥃 Licores y Shots</h3>
                     <div class="productos-grid">
                         <div class="producto">
-                            <img src="" alt="Producto 4">
-                            <h4>Producto 4</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-4" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=200&fit=crop" alt="Whisky Buchanans Botella">
+                            <h4>Whisky Buchanan's Botella</h4>
+                            <p>El whisky escocés premium. Para compartir en grupo.</p>
+                            <span class="precio">$360.000</span>
+                            <button class="AñadirCarrito" data-producto="buchanans-botella" data-precio="360000">Añadir al carrito</button>
                         </div>
-                        
+
                         <div class="producto">
-                            <img src="" alt="Producto 5">
-                            <h4>Producto 5</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-5" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=200&fit=crop" alt="Whisky Buchanans Media">
+                            <h4>Whisky Buchanan's Media</h4>
+                            <p>Media botella de Buchanan's para grupos pequeños.</p>
+                            <span class="precio">$210.000</span>
+                            <button class="AñadirCarrito" data-producto="buchanans-media" data-precio="210000">Añadir al carrito</button>
                         </div>
-                        
+
                         <div class="producto">
-                            <img src="" alt="Producto 6">
-                            <h4>Producto 6</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-6" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=200&fit=crop" alt="Jack Daniels Botella">
+                            <h4>Jack Daniels Botella</h4>
+                            <p>El whiskey más rockero del mundo. Tennessee whiskey auténtico.</p>
+                            <span class="precio">$295.000</span>
+                            <button class="AñadirCarrito" data-producto="jack-botella" data-precio="295000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=200&fit=crop" alt="Jack Daniels Media">
+                            <h4>Jack Daniels Media</h4>
+                            <p>Media botella del clásico Jack. Perfecto para empezar la noche.</p>
+                            <span class="precio">$170.000</span>
+                            <button class="AñadirCarrito" data-producto="jack-media" data-precio="170000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=200&fit=crop" alt="Jack Daniels Shot">
+                            <h4>Jack Daniels Shot</h4>
+                            <p>Un shot del mítico whiskey americano.</p>
+                            <span class="precio">$25.000</span>
+                            <button class="AñadirCarrito" data-producto="jack-shot" data-precio="25000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=300&h=200&fit=crop" alt="Jägermeister Botella">
+                            <h4>Jägermeister Botella</h4>
+                            <p>El licor de hierbas alemán. Botella completa para la banda.</p>
+                            <span class="precio">$280.000</span>
+                            <button class="AñadirCarrito" data-producto="jager-botella" data-precio="280000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=300&h=200&fit=crop" alt="Jägermeister Media">
+                            <h4>Jägermeister Media</h4>
+                            <p>Media botella del legendario licor alemán.</p>
+                            <span class="precio">$165.000</span>
+                            <button class="AñadirCarrito" data-producto="jager-media" data-precio="165000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=300&h=200&fit=crop" alt="Jägermeister Shot">
+                            <h4>Jägermeister Shot</h4>
+                            <p>El shot más popular entre los rockeros.</p>
+                            <span class="precio">$25.000</span>
+                            <button class="AñadirCarrito" data-producto="jager-shot" data-precio="25000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=200&fit=crop" alt="Tequila Jose Cuervo">
+                            <h4>Tequila José Cuervo Shot</h4>
+                            <p>El tequila mexicano más famoso del mundo.</p>
+                            <span class="precio">$20.000</span>
+                            <button class="AñadirCarrito" data-producto="cuervo-shot" data-precio="20000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=200&fit=crop" alt="Aguardiente Nectar Verde">
+                            <h4>Aguardiente Nectar Verde Shot</h4>
+                            <p>El aguardiente colombiano tradicional.</p>
+                            <span class="precio">$15.000</span>
+                            <button class="AñadirCarrito" data-producto="nectar-shot" data-precio="15000">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categoría Cócteles -->
+                <!-- Categoría Cervezas -->
                 <div class="categoria">
-                    <h3>Cócteles</h3>
+                    <h3>🍺 Cervezas</h3>
                     <div class="productos-grid">
                         <div class="producto">
-                            <img src="" alt="Producto 7">
-                            <h4>Producto 7</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-7" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Jarra Poker">
+                            <h4>Jarra Litro Poker</h4>
+                            <p>Jarra de cerveza Poker para compartir. Un litro de frescura.</p>
+                            <span class="precio">$20.000</span>
+                            <button class="AñadirCarrito" data-producto="jarra-poker" data-precio="20000">Añadir al carrito</button>
                         </div>
-                        
+
                         <div class="producto">
-                            <img src="" alt="Producto 8">
-                            <h4>Producto 8</h4>
-                            <p>Descripción del producto</p>
-                            <span class="precio">$0</span>
-                            <button class="AñadirCarrito" data-producto="producto-8" data-precio="0">Añadir al carrito</button>
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Stella Artois">
+                            <h4>Stella Artois</h4>
+                            <p>Cerveza premium belga. Elegancia europea en cada sorbo.</p>
+                            <span class="precio">$17.000</span>
+                            <button class="AñadirCarrito" data-producto="stella" data-precio="17000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=300&h=200&fit=crop" alt="Corona">
+                            <h4>Corona 330ml</h4>
+                            <p>La cerveza mexicana más refrescante del mundo.</p>
+                            <span class="precio">$13.000</span>
+                            <button class="AñadirCarrito" data-producto="corona" data-precio="13000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Club Colombia">
+                            <h4>Club Colombia 330ml</h4>
+                            <p>La cerveza premium colombiana. Negra, Roja o Dorada.</p>
+                            <span class="precio">$9.000</span>
+                            <button class="AñadirCarrito" data-producto="club-colombia" data-precio="9000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Aguila Cero">
+                            <h4>Águila Cero/Light</h4>
+                            <p>Para quienes cuidan su línea pero no renuncian al sabor.</p>
+                            <span class="precio">$9.000</span>
+                            <button class="AñadirCarrito" data-producto="aguila-cero" data-precio="9000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Aguila Poker">
+                            <h4>Águila/Poker 330ml</h4>
+                            <p>Las cervezas colombianas tradicionales de siempre.</p>
+                            <span class="precio">$7.000</span>
+                            <button class="AñadirCarrito" data-producto="aguila-poker" data-precio="7000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Budweiser">
+                            <h4>Budweiser 250ml</h4>
+                            <p>La cerveza americana por excelencia.</p>
+                            <span class="precio">$7.000</span>
+                            <button class="AñadirCarrito" data-producto="budweiser" data-precio="7000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Smirnoff ICE">
+                            <h4>Smirnoff ICE</h4>
+                            <p>Bebida refrescante con vodka. Dulce y suave.</p>
+                            <span class="precio">$20.000</span>
+                            <button class="AñadirCarrito" data-producto="smirnoff-ice" data-precio="20000">Añadir al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categoría Bebidas Sin Alcohol -->
+                <div class="categoria">
+                    <h3>🥤 Bebidas Sin Alcohol</h3>
+                    <div class="productos-grid">
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=300&h=200&fit=crop" alt="Red Bull">
+                            <h4>Red Bull</h4>
+                            <p>La bebida energizante que te da alas. Perfecta para aguantar toda la noche.</p>
+                            <span class="precio">$20.000</span>
+                            <button class="AñadirCarrito" data-producto="redbull" data-precio="20000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&h=200&fit=crop" alt="Capuchino">
+                            <h4>Capuchino</h4>
+                            <p>Café espumoso y aromático. Ideal para empezar la tarde rockera.</p>
+                            <span class="precio">$14.000</span>
+                            <button class="AñadirCarrito" data-producto="capuchino" data-precio="14000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=300&h=200&fit=crop" alt="Limonada Cerezada">
+                            <h4>Limonada Cerezada</h4>
+                            <p>Refrescante limonada con toque de cereza. Dulce rebeldía.</p>
+                            <span class="precio">$9.000</span>
+                            <button class="AñadirCarrito" data-producto="limonada-cerezada" data-precio="9000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=300&h=200&fit=crop" alt="Limonada Natural">
+                            <h4>Limonada Natural</h4>
+                            <p>Clásica limonada natural. Simple y refrescante.</p>
+                            <span class="precio">$8.000</span>
+                            <button class="AñadirCarrito" data-producto="limonada-natural" data-precio="8000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" alt="Gaseosa Bretaña">
+                            <h4>Gaseosa Bretaña</h4>
+                            <p>Gaseosas colombianas de diferentes sabores.</p>
+                            <span class="precio">$8.000</span>
+                            <button class="AñadirCarrito" data-producto="gaseosa-bretana" data-precio="8000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=200&fit=crop" alt="Aromatica">
+                            <h4>Aromática</h4>
+                            <p>Té de hierbas y frutos naturales. Relajante y saludable.</p>
+                            <span class="precio">$5.000</span>
+                            <button class="AñadirCarrito" data-producto="aromatica" data-precio="5000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=200&fit=crop" alt="Agua">
+                            <h4>Agua</h4>
+                            <p>Agua natural o con gas. Lo básico siempre es necesario.</p>
+                            <span class="precio">$5.000</span>
+                            <button class="AñadirCarrito" data-producto="agua" data-precio="5000">Añadir al carrito</button>
+                        </div>
+
+                        <div class="producto">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&h=200&fit=crop" alt="Tinto">
+                            <h4>Tinto</h4>
+                            <p>El café colombiano tradicional. Fuerte y aromático.</p>
+                            <span class="precio">$2.000</span>
+                            <button class="AñadirCarrito" data-producto="tinto" data-precio="2000">Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
@@ -131,32 +403,27 @@
         </section>
     </main>
 
-        
-       
-
     <footer>
-         <section id="equipo">
+        <section id="equipo">
             <div class="equipo-container">
                 <h2>Nuestro Equipo Desarrollador</h2>
                 <div class="miembros-equipo">
                     <div class="miembro">
                         <h3>Juan Davis Sanchez Roldán</h3>
                         <p>Código: 340321</p>
-                        <p></p>
-                        <img src="" alt=""><!---Imagenes de cada desarrollador-->
+                        <p>Frontend Developer & Rock Enthusiast</p>
                     </div>
                     
                     <div class="miembro">
                         <h3>Felipe Franco Jaime</h3>
                         <p>Código: 272153</p>
-                        <p></p>
-                        <img src="" alt="""><!---Imagenes de cada desarrollador-->
+                        <p>Backend Developer & Music Lover</p>
                     </div>
                 </div>
             </div>
         </section>
         <div class="footer-container">
-            <p></p>
+            <p>© 2025 Rockxy - Bar de Rock en Chapinero, Bogotá</p>
             <p>Proyecto de Desarrollo Web - Corte 1</p>
         </div>
     </footer>
