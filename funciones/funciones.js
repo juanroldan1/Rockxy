@@ -1,7 +1,7 @@
 // Variables del carrito
 let carritoCompras = [];
 
-//Agregar desde el JSon
+//Agregar desde el JSON (API)
 async function mostrarCatalogoAPI() {
     const url = "https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec";
     try {
@@ -9,24 +9,80 @@ async function mostrarCatalogoAPI() {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-        const productos = await response.json();
+        const respuesta = await response.json();
+        const productos = respuesta.data || [];
 
-        const contenedor = document.querySelector('.productos-grid');
-        if (contenedor) {
-            contenedor.innerHTML = '';
-            productos.forEach(producto => {
+        // Coctelería
+        const contenedorCocteles = document.querySelector('.cocteleria-grid');
+        if (contenedorCocteles) {
+            contenedorCocteles.innerHTML = '';
+            const cocteles = productos.filter(producto => producto.Categoría === "Coctelería");
+            cocteles.forEach(producto => {
+                const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
                 const div = document.createElement('div');
-                div.innerHTML = `<img src="${producto.image}" alt="${producto.nombre}" />
-                <h4>${producto.nombre}</h4>
-                <p>${producto.descripcion}</p>
-                <span class="AñadirCarrito" data-producto="${producto.id}"></span>`;
-                contenedor.appendChild(div);
+                div.className = 'producto';
+                div.innerHTML = `
+                    <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
+                    <h4>${producto.Nombre}</h4>
+                    <p>${producto.Ingredientes}</p>
+                    <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
+                    <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
+                `;
+                contenedorCocteles.appendChild(div);
             });
         }
 
-        console.log(productos);
+        // Licores
+        const contenedorLicores = document.querySelector('.licores-grid');
+        if (contenedorLicores) {
+            contenedorLicores.innerHTML = '';
+            const licores = productos.filter(producto => producto.Categoría === "Licores");
+            licores.forEach(producto => {
+                const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
+                const div = document.createElement('div');
+                div.className = 'producto';
+                div.innerHTML = `
+                    <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
+                    <h4>${producto.Nombre}</h4>
+                    <p>${producto.Ingredientes}</p>
+                    <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
+                    <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
+                `;
+                contenedorLicores.appendChild(div);
+            });
+        }
+        // Cervezas
+        const contenedorCervezas = document.querySelector('.cervezas-grid');
+        if (contenedorCervezas) {
+            contenedorCervezas.innerHTML = '';
+            const cervezas = productos.filter(producto => producto.Categoría === "Cervezas");
+            cervezas.forEach(producto => {
+                const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
+                const div = document.createElement('div');
+                div.className = 'producto';
+                div.innerHTML = `
+                    <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
+                    <h4>${producto.Nombre}</h4>
+                    <p>${producto.Ingredientes}</p>
+                    <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
+                    <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
+                `;
+                contenedorCervezas.appendChild(div);
+            });
+        }
+        //
+
+        console.log('Productos cargados:', productos.length);
     } catch (error) {
-        console.error(error.message);
+        console.error('Error al cargar productos:', error.message);
+        const contenedorCocteles = document.querySelector('.cocteleria-grid');
+        const contenedorLicores = document.querySelector('.licores-grid');
+        if (contenedorCocteles) {
+            contenedorCocteles.innerHTML = '<p style="color: red;">Error al cargar los productos.</p>';
+        }
+        if (contenedorLicores) {
+            contenedorLicores.innerHTML = '<p style="color: red;">Error al cargar los productos.</p>';
+        }
     }
 }
 
@@ -51,7 +107,6 @@ function actualizarContadorCarrito() {
     if (contador) {
         if (cantidadTotal > 0) {
             contador.textContent = cantidadTotal;
-            // Mostrar como inline-flex para que quede como badge encima del enlace
             contador.style.display = 'inline-flex';
         } else {
             contador.style.display = 'none';
@@ -63,7 +118,6 @@ function actualizarContadorCarrito() {
 // AÑADIR PRODUCTO
 function añadirAlCarrito(productoId, precio, nombre) {
     const productoExistente = carritoCompras.find(item => item.id === productoId);
-    
     if (productoExistente) {
         productoExistente.cantidad += 1;
         productoExistente.subtotal = productoExistente.precio * productoExistente.cantidad;
@@ -77,16 +131,15 @@ function añadirAlCarrito(productoId, precio, nombre) {
         };
         carritoCompras.push(nuevoProducto);
     }
-    
     guardarCarrito();
     actualizarContadorCarrito();
-    mostrarProductosEnCarrito(); // Llama a esta función para que se actualice la vista
+    mostrarProductosEnCarrito();
+    alert(`${nombre} agregado al carrito`);
 }
 
 //ELIMINAR PRODUCTO
 function eliminarDelCarrito(productoId) {
     const indiceProducto = carritoCompras.findIndex(item => item.id === productoId);
-    
     if (indiceProducto !== -1) {
         carritoCompras.splice(indiceProducto, 1);
         guardarCarrito();
@@ -98,7 +151,6 @@ function eliminarDelCarrito(productoId) {
 // Función para reducir la cantidad
 function reducirCantidad(productoId) {
     const producto = carritoCompras.find(item => item.id === productoId);
-    
     if (producto) {
         if (producto.cantidad > 1) {
             producto.cantidad -= 1;
@@ -107,7 +159,6 @@ function reducirCantidad(productoId) {
             eliminarDelCarrito(productoId);
             return;
         }
-        
         guardarCarrito();
         actualizarContadorCarrito();
         mostrarProductosEnCarrito();
@@ -117,16 +168,13 @@ function reducirCantidad(productoId) {
 //CALCULAR TOTAL DEL CARRITO
 function calcularTotalCarrito() {
     let totalGeneral = 0;
-    
     carritoCompras.forEach(item => {
         totalGeneral += item.subtotal;
     });
-    
     const elementoTotal = document.getElementById('total-carrito');
     if (elementoTotal) {
         elementoTotal.textContent = totalGeneral.toFixed(2);
     }
-    
     return totalGeneral;
 }
 
@@ -146,20 +194,14 @@ function enviarformulario() {
         alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
     }
-
-    // Aquí se simula el envío de datos a un servidor
     console.log("Enviando datos del carrito al servidor:", JSON.stringify(carritoCompras, null, 2));
-
-    
     const url = 'https://jsonplaceholder.typicode.com/posts';
-
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            nombre: nombreCliente,
             items: carritoCompras,
             total: calcularTotalCarrito()
         }),
@@ -168,7 +210,6 @@ function enviarformulario() {
     .then(data => {
         console.log('Respuesta del servidor:', data);
         alert('¡Compra finalizada con éxito!');
-        // Opcionalmente, vaciar el carrito después de la compra
         carritoCompras = [];
         guardarCarrito();
         actualizarContadorCarrito();
@@ -185,24 +226,19 @@ function mostrarProductosEnCarrito() {
     const listaProductos = document.getElementById('lista-productos');
     const carritoVacio = document.getElementById('carrito-vacio');
     const carritoConContenido = document.getElementById('carrito-con-contenido');
-    
     if (!listaProductos || !carritoVacio || !carritoConContenido) {
         return;
     }
-
     if (carritoCompras.length === 0) {
         carritoVacio.style.display = 'block';
         carritoConContenido.style.display = 'none';
     } else {
         carritoVacio.style.display = 'none';
         carritoConContenido.style.display = 'block';
-        
         listaProductos.innerHTML = '';
-        
         carritoCompras.forEach(item => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'producto-carrito';
-            
             itemDiv.innerHTML = `
                 <div class="info-producto">
                     <h4>${item.nombre}</h4>
@@ -227,19 +263,16 @@ function mostrarProductosEnCarrito() {
 // Inicialización
 document.addEventListener('DOMContentLoaded', function() {
     cargarCarrito();
-    
-    const botonesAñadir = document.querySelectorAll('.AñadirCarrito');
-    
-    botonesAñadir.forEach(boton => {
-        boton.addEventListener('click', function() {
-            const productoId = this.getAttribute('data-producto');
-            const precio = this.getAttribute('data-precio');
-            const nombre = this.parentElement.querySelector('h4').textContent;
-            
+    mostrarCatalogoAPI();
+    // Delegación de eventos para los botones "Añadir al carrito"
+    document.body.addEventListener('click', function(e) {
+        if (e.target.classList.contains('AñadirCarrito')) {
+            const productoId = e.target.getAttribute('data-producto');
+            const precio = e.target.getAttribute('data-precio');
+            const nombre = e.target.getAttribute('data-nombre');
             añadirAlCarrito(productoId, precio, nombre);
-        });
+        }
     });
-    
     // Si estamos en la página del carrito, mostrar productos
     if (document.getElementById('lista-productos')) {
         mostrarProductosEnCarrito();
