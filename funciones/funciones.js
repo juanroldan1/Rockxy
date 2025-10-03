@@ -1,6 +1,35 @@
 // Variables del carrito
 let carritoCompras = [];
 
+//Agregar desde el JSon
+async function mostrarCatalogoAPI() {
+    const url = "https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const productos = await response.json();
+
+        const contenedor = document.querySelector('.productos-grid');
+        if (contenedor) {
+            contenedor.innerHTML = '';
+            productos.forEach(producto => {
+                const div = document.createElement('div');
+                div.innerHTML = `<img src="${producto.image}" alt="${producto.nombre}" />
+                <h4>${producto.nombre}</h4>
+                <p>${producto.descripcion}</p>
+                <span class="AñadirCarrito" data-producto="${producto.id}"></span>`;
+                contenedor.appendChild(div);
+            });
+        }
+
+        console.log(productos);
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
 // Función para guardar el carrito en Local Storage
 function guardarCarrito() {
     localStorage.setItem('carritoCompras', JSON.stringify(carritoCompras));
