@@ -110,7 +110,7 @@ function vaciarCarrito() {
 }
 
 //ENVÍO AL SERVIDOR
-function enviarAlServidor() {
+function enviarformulario() {
     if (carritoCompras.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
@@ -128,6 +128,7 @@ function enviarAlServidor() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            nombre: nombreCliente,
             items: carritoCompras,
             total: calcularTotalCarrito()
         }),
@@ -135,7 +136,7 @@ function enviarAlServidor() {
     .then(response => response.json())
     .then(data => {
         console.log('Respuesta del servidor:', data);
-        alert('¡Compra finalizada con éxito! Tu pedido ha sido enviado.');
+        alert('¡Compra finalizada con éxito!');
         // Opcionalmente, vaciar el carrito después de la compra
         carritoCompras = [];
         guardarCarrito();
