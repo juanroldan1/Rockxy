@@ -74,6 +74,32 @@ body {
     box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
 }
 
+/* Contador (badge) del carrito */
+#contador-carrito,
+.contador-carrito {
+    /* El anchor ya tiene position: relative; posicionamos el badge en absoluto */
+    position: absolute !important;
+    top: 8px;
+    right: 10px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #ff4757;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    display: none; /* se controla desde JS, pero por defecto oculto */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1; /* usar flex para centrar */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    z-index: 5;
+    transform: translateY(-10%);
+}
+
 /*CONFIGURACIÓN GENERAL DE SECCIONES*/
 main {
     margin-top: 140px;

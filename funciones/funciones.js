@@ -22,9 +22,11 @@ function actualizarContadorCarrito() {
     if (contador) {
         if (cantidadTotal > 0) {
             contador.textContent = cantidadTotal;
-            contador.style.display = 'block';
+            // Mostrar como inline-flex para que quede como badge encima del enlace
+            contador.style.display = 'inline-flex';
         } else {
             contador.style.display = 'none';
+            contador.textContent = '';
         }
     }
 }
