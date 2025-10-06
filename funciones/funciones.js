@@ -1,11 +1,15 @@
 // Variables del carrito
 let carritoCompras = [];
 
+function doPost(e){
+    
+}
+
 //Agregar desde el JSON (API)
 async function mostrarCatalogoAPI() {
-    const url = "https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec";
+    const urlProductos = "https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec";
     try {
-        const response = await fetch(url);
+        const response = await fetch(urlProductos);
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
@@ -168,11 +172,12 @@ function reducirCantidad(productoId) {
 function calcularTotalCarrito() {
     let totalGeneral = 0;
     carritoCompras.forEach(item => {
-        totalGeneral += item.subtotal;
+        const subtotal = item.subtotal || 0;
+        totalGeneral += subtotal;
     });
     const elementoTotal = document.getElementById('total-carrito');
     if (elementoTotal) {
-        elementoTotal.textContent = totalGeneral.toFixed(2);
+        elementoTotal.textContent = totalGeneral.toLocaleString();
     }
     return totalGeneral;
 }
@@ -218,32 +223,29 @@ window.onclick = function(event) {
 
 //ENVÍO AL SERVIDOR
 function enviarformulario(event) {
-    event.preventDefault(); 
+    event.preventDefault();
     
     if (carritoCompras.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
     }
 
-    // Obtener datos del formulario
     const nombreCliente = document.getElementById('nombre-cliente').value;
     const telefonoCliente = document.getElementById('telefono-cliente').value;
     const direccionCliente = document.getElementById('direccion-cliente').value;
 
-    // Validar que los campos no estén vacíos
     if (!nombreCliente || !telefonoCliente || !direccionCliente) {
         alert("Por favor completa todos los campos.");
         return;
     }
 
-    // Construir la lista de productos
+    // Validar que los productos tengan precio válido
     const productos = carritoCompras.map(item => ({
         id: item.id,
-        precio: item.precio,
+        precio: item.precio || 0,
         cantidad: item.cantidad
     }));
 
-    // Construir el objeto pedido 
     const pedido = {
         nombreCliente: nombreCliente,
         telefonoCliente: telefonoCliente,
@@ -254,27 +256,23 @@ function enviarformulario(event) {
 
     console.log("Enviando pedido al servidor:", JSON.stringify(pedido, null, 2));
 
-    
-    const url = 'https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec';
+    //pedidos
+    const urlPedidos = 'https://script.google.com/macros/s/AKfycby4w5Ea9hFFpaBjRJZ9SANGu9DAy_LTRgEQQOjCL-WIo5SnfI8_-ve4Uxqfd1OKM-CURw/exec';
 
-    
-
-    fetch(url, {
+    fetch(urlPedidos, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(pedido),
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Respuesta del servidor:', data);
-        alert('¡Pedido enviado con éxito!\n\nDetalles:\nCliente: ' + nombreCliente + '\nTotal: ' + calcularTotalCarrito().toFixed(2));
+    .then(() => {
+        console.log('Pedido enviado');
+        alert('¡Pedido enviado con éxito!\n\nDetalles:\nCliente: ' + nombreCliente + '\nTotal: $' + calcularTotalCarrito().toLocaleString());
         
-        // Cerrar modal
         cerrarModalCliente();
         
-        // Vaciar carrito después de enviar
         carritoCompras = [];
         guardarCarrito();
         actualizarContadorCarrito();
@@ -304,18 +302,22 @@ function mostrarProductosEnCarrito() {
         carritoCompras.forEach(item => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'producto-carrito';
+            // FIX: Validar que precio no sea null
+            const precioValido = item.precio || 0;
+            const subtotalValido = item.subtotal || 0;
+            
             itemDiv.innerHTML = `
                 <div class="info-producto">
                     <h4>${item.nombre}</h4>
-                    <p>Precio: ${item.precio.toFixed(2)}</p>
+                    <p>Precio: $${precioValido.toLocaleString()}</p>
                 </div>
                 <div class="controles-cantidad">
                     <button onclick="reducirCantidad('${item.id}')">-</button>
                     <span>${item.cantidad}</span>
-                    <button onclick="añadirAlCarrito('${item.id}', ${item.precio}, '${item.nombre}')">+</button>
+                    <button onclick="añadirAlCarrito('${item.id}', ${precioValido}, '${item.nombre}')">+</button>
                 </div>
                 <div class="subtotal-producto">
-                    <p>${item.subtotal.toFixed(2)}</p>
+                    <p>$${subtotalValido.toLocaleString()}</p>
                     <button onclick="eliminarDelCarrito('${item.id}')" class="btn-eliminar">Eliminar</button>
                 </div>
             `;
