@@ -70,7 +70,6 @@ async function mostrarCatalogoAPI() {
                 contenedorCervezas.appendChild(div);
             });
         }
-        //
 
         console.log('Productos cargados:', productos.length);
     } catch (error) {
@@ -188,28 +187,94 @@ function vaciarCarrito() {
     }
 }
 
-//ENVÍO AL SERVIDOR
-function enviarformulario() {
+// FUNCIONES DEL MODAL
+function mostrarModalCliente() {
     if (carritoCompras.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
         return;
     }
-    console.log("Enviando datos del carrito al servidor:", JSON.stringify(carritoCompras, null, 2));
-    const url = 'https://jsonplaceholder.typicode.com/posts';
+    const modal = document.getElementById('modal-cliente');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function cerrarModalCliente() {
+    const modal = document.getElementById('modal-cliente');
+    if (modal) {
+        modal.style.display = 'none';
+        // Limpiar el formulario
+        document.getElementById('form-cliente').reset();
+    }
+}
+
+// Cerrar modal al hacer clic fuera de él
+window.onclick = function(event) {
+    const modal = document.getElementById('modal-cliente');
+    if (event.target === modal) {
+        cerrarModalCliente();
+    }
+}
+
+//ENVÍO AL SERVIDOR CON ESTRUCTURA CORRECTA
+function enviarformulario(event) {
+    event.preventDefault(); // Prevenir el envío por defecto del formulario
+    
+    if (carritoCompras.length === 0) {
+        alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
+        return;
+    }
+
+    // Obtener datos del formulario
+    const nombreCliente = document.getElementById('nombre-cliente').value;
+    const telefonoCliente = document.getElementById('telefono-cliente').value;
+    const direccionCliente = document.getElementById('direccion-cliente').value;
+
+    // Validar que los campos no estén vacíos
+    if (!nombreCliente || !telefonoCliente || !direccionCliente) {
+        alert("Por favor completa todos los campos.");
+        return;
+    }
+
+    // Construir la lista de productos según la estructura requerida
+    const productos = carritoCompras.map(item => ({
+        id: item.id,
+        precio: item.precio,
+        cantidad: item.cantidad
+    }));
+
+    // Construir el objeto pedido con la estructura JSON requerida
+    const pedido = {
+        nombreCliente: nombreCliente,
+        telefonoCliente: telefonoCliente,
+        direccionCliente: direccionCliente,
+        productos: productos,
+        total: calcularTotalCarrito()
+    };
+
+    console.log("Enviando pedido al servidor:", JSON.stringify(pedido, null, 2));
+
+    // ⚠️ IMPORTANTE: Reemplaza esta URL con la URL de tu Google Apps Script
+    const url = 'https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec';
+
+    
+
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            items: carritoCompras,
-            total: calcularTotalCarrito()
-        }),
+        body: JSON.stringify(pedido),
     })
     .then(response => response.json())
     .then(data => {
         console.log('Respuesta del servidor:', data);
-        alert('¡Compra finalizada con éxito!');
+        alert('¡Pedido enviado con éxito!\n\nDetalles:\nCliente: ' + nombreCliente + '\nTotal: ' + calcularTotalCarrito().toFixed(2));
+        
+        // Cerrar modal
+        cerrarModalCliente();
+        
+        // Vaciar carrito después de enviar
         carritoCompras = [];
         guardarCarrito();
         actualizarContadorCarrito();
@@ -217,7 +282,7 @@ function enviarformulario() {
     })
     .catch((error) => {
         console.error('Error al enviar al servidor:', error);
-        alert('Ocurrió un error al procesar tu compra. Por favor, inténtalo de nuevo.');
+        alert('Ocurrió un error al procesar tu pedido. Por favor, inténtalo de nuevo.');
     });
 }
 
@@ -242,7 +307,7 @@ function mostrarProductosEnCarrito() {
             itemDiv.innerHTML = `
                 <div class="info-producto">
                     <h4>${item.nombre}</h4>
-                    <p>Precio: $${item.precio.toFixed(2)}</p>
+                    <p>Precio: ${item.precio.toFixed(2)}</p>
                 </div>
                 <div class="controles-cantidad">
                     <button onclick="reducirCantidad('${item.id}')">-</button>
@@ -250,7 +315,7 @@ function mostrarProductosEnCarrito() {
                     <button onclick="añadirAlCarrito('${item.id}', ${item.precio}, '${item.nombre}')">+</button>
                 </div>
                 <div class="subtotal-producto">
-                    <p>$${item.subtotal.toFixed(2)}</p>
+                    <p>${item.subtotal.toFixed(2)}</p>
                     <button onclick="eliminarDelCarrito('${item.id}')" class="btn-eliminar">Eliminar</button>
                 </div>
             `;
