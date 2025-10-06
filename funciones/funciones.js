@@ -216,9 +216,9 @@ window.onclick = function(event) {
     }
 }
 
-//ENVÍO AL SERVIDOR CON ESTRUCTURA CORRECTA
+//ENVÍO AL SERVIDOR
 function enviarformulario(event) {
-    event.preventDefault(); // Prevenir el envío por defecto del formulario
+    event.preventDefault(); 
     
     if (carritoCompras.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de finalizar la compra.");
@@ -236,14 +236,14 @@ function enviarformulario(event) {
         return;
     }
 
-    // Construir la lista de productos según la estructura requerida
+    // Construir la lista de productos
     const productos = carritoCompras.map(item => ({
         id: item.id,
         precio: item.precio,
         cantidad: item.cantidad
     }));
 
-    // Construir el objeto pedido con la estructura JSON requerida
+    // Construir el objeto pedido 
     const pedido = {
         nombreCliente: nombreCliente,
         telefonoCliente: telefonoCliente,
@@ -254,7 +254,7 @@ function enviarformulario(event) {
 
     console.log("Enviando pedido al servidor:", JSON.stringify(pedido, null, 2));
 
-    // ⚠️ IMPORTANTE: Reemplaza esta URL con la URL de tu Google Apps Script
+    
     const url = 'https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec';
 
     
@@ -329,7 +329,7 @@ function mostrarProductosEnCarrito() {
 document.addEventListener('DOMContentLoaded', function() {
     cargarCarrito();
     mostrarCatalogoAPI();
-    // Delegación de eventos para los botones "Añadir al carrito"
+    
     document.body.addEventListener('click', function(e) {
         if (e.target.classList.contains('AñadirCarrito')) {
             const productoId = e.target.getAttribute('data-producto');
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
             añadirAlCarrito(productoId, precio, nombre);
         }
     });
-    // Si estamos en la página del carrito, mostrar productos
+    // MOSTRAR PRODUCTOS EN LA PÁGINA DEL CARRITO
     if (document.getElementById('lista-productos')) {
         mostrarProductosEnCarrito();
     }
