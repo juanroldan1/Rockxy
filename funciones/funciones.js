@@ -1,15 +1,50 @@
 // Variables del carrito
 let carritoCompras = [];
 
-function doPost(e){
-    
+// ========== FUNCIONES DEL SPINNER ==========
+function mostrarSpinner(texto = 'Cargando...') {
+    const spinner = document.getElementById('spinner-overlay');
+    const spinnerText = document.getElementById('spinner-text');
+    if (spinner) {
+        if (spinnerText) {
+            spinnerText.textContent = texto;
+        }
+        spinner.classList.add('active');
+        
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function ocultarSpinner() {
+    const spinner = document.getElementById('spinner-overlay');
+    if (spinner) {
+        spinner.classList.remove('active');
+
+        document.body.style.overflow = '';
+    }
 }
 
 //Agregar desde el JSON (API)
 async function mostrarCatalogoAPI() {
-    const urlProductos = "https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec";
+    const url = "https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec";
+    
+    // Mostrar spinner mientras carga
+    const contenedorCocteles = document.querySelector('.cocteleria-grid');
+    const contenedorLicores = document.querySelector('.licores-grid');
+    const contenedorCervezas = document.querySelector('.cervezas-grid');
+    
+    if (contenedorCocteles) {
+        contenedorCocteles.innerHTML = '<div class="productos-loading"><div class="spinner-small"></div><p>Cargando productos...</p></div>';
+    }
+    if (contenedorLicores) {
+        contenedorLicores.innerHTML = '<div class="productos-loading"><div class="spinner-small"></div><p>Cargando productos...</p></div>';
+    }
+    if (contenedorCervezas) {
+        contenedorCervezas.innerHTML = '<div class="productos-loading"><div class="spinner-small"></div><p>Cargando productos...</p></div>';
+    }
+    
     try {
-        const response = await fetch(urlProductos);
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
@@ -17,74 +52,85 @@ async function mostrarCatalogoAPI() {
         const productos = respuesta.data || [];
 
         // Coctelería
-        const contenedorCocteles = document.querySelector('.cocteleria-grid');
         if (contenedorCocteles) {
             contenedorCocteles.innerHTML = '';
             const cocteles = productos.filter(producto => producto.Categoría === "Coctelería");
-            cocteles.forEach(producto => {
-                const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
-                const div = document.createElement('div');
-                div.className = 'producto';
-                div.innerHTML = `
-                    <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
-                    <h4>${producto.Nombre}</h4>
-                    <p>${producto.Ingredientes}</p>
-                    <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
-                    <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
-                `;
-                contenedorCocteles.appendChild(div);
-            });
+            if (cocteles.length === 0) {
+                contenedorCocteles.innerHTML = '<p style="color: #999;">No hay productos disponibles</p>';
+            } else {
+                cocteles.forEach(producto => {
+                    const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
+                    const div = document.createElement('div');
+                    div.className = 'producto';
+                    div.innerHTML = `
+                        <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
+                        <h4>${producto.Nombre}</h4>
+                        <p>${producto.Ingredientes}</p>
+                        <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
+                        <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
+                    `;
+                    contenedorCocteles.appendChild(div);
+                });
+            }
         }
 
         // Licores
-        const contenedorLicores = document.querySelector('.licores-grid');
         if (contenedorLicores) {
             contenedorLicores.innerHTML = '';
             const licores = productos.filter(producto => producto.Categoría === "Licores");
-            licores.forEach(producto => {
-                const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
-                const div = document.createElement('div');
-                div.className = 'producto';
-                div.innerHTML = `
-                    <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
-                    <h4>${producto.Nombre}</h4>
-                    <p>${producto.Ingredientes}</p>
-                    <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
-                    <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
-                `;
-                contenedorLicores.appendChild(div);
-            });
+            if (licores.length === 0) {
+                contenedorLicores.innerHTML = '<p style="color: #999;">No hay productos disponibles</p>';
+            } else {
+                licores.forEach(producto => {
+                    const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
+                    const div = document.createElement('div');
+                    div.className = 'producto';
+                    div.innerHTML = `
+                        <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
+                        <h4>${producto.Nombre}</h4>
+                        <p>${producto.Ingredientes}</p>
+                        <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
+                        <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
+                    `;
+                    contenedorLicores.appendChild(div);
+                });
+            }
         }
+
         // Cervezas
-        const contenedorCervezas = document.querySelector('.cervezas-grid');
         if (contenedorCervezas) {
             contenedorCervezas.innerHTML = '';
             const cervezas = productos.filter(producto => producto.Categoría === "Cervezas");
-            cervezas.forEach(producto => {
-                const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
-                const div = document.createElement('div');
-                div.className = 'producto';
-                div.innerHTML = `
-                    <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
-                    <h4>${producto.Nombre}</h4>
-                    <p>${producto.Ingredientes}</p>
-                    <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
-                    <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
-                `;
-                contenedorCervezas.appendChild(div);
-            });
+            if (cervezas.length === 0) {
+                contenedorCervezas.innerHTML = '<p style="color: #999;">No hay productos disponibles</p>';
+            } else {
+                cervezas.forEach(producto => {
+                    const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
+                    const div = document.createElement('div');
+                    div.className = 'producto';
+                    div.innerHTML = `
+                        <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
+                        <h4>${producto.Nombre}</h4>
+                        <p>${producto.Ingredientes}</p>
+                        <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
+                        <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
+                    `;
+                    contenedorCervezas.appendChild(div);
+                });
+            }
         }
 
         console.log('Productos cargados:', productos.length);
     } catch (error) {
         console.error('Error al cargar productos:', error.message);
-        const contenedorCocteles = document.querySelector('.cocteleria-grid');
-        const contenedorLicores = document.querySelector('.licores-grid');
         if (contenedorCocteles) {
-            contenedorCocteles.innerHTML = '<p style="color: red;">Error al cargar los productos.</p>';
+            contenedorCocteles.innerHTML = '<p style="color: red;">Error al cargar los productos. Por favor, recarga la página.</p>';
         }
         if (contenedorLicores) {
-            contenedorLicores.innerHTML = '<p style="color: red;">Error al cargar los productos.</p>';
+            contenedorLicores.innerHTML = '<p style="color: red;">Error al cargar los productos. Por favor, recarga la página.</p>';
+        }
+        if (contenedorCervezas) {
+            contenedorCervezas.innerHTML = '<p style="color: red;">Error al cargar los productos. Por favor, recarga la página.</p>';
         }
     }
 }
@@ -239,7 +285,6 @@ function enviarformulario(event) {
         return;
     }
 
-    // Validar que los productos tengan precio válido
     const productos = carritoCompras.map(item => ({
         id: item.id,
         precio: item.precio || 0,
@@ -256,7 +301,12 @@ function enviarformulario(event) {
 
     console.log("Enviando pedido al servidor:", JSON.stringify(pedido, null, 2));
 
-    //pedidos
+    // Mostrar spinner
+    mostrarSpinner('Enviando tu pedido...');
+    
+    // Cerrar modal antes del spinner
+    cerrarModalCliente();
+
     const urlPedidos = 'https://script.google.com/macros/s/AKfycby4w5Ea9hFFpaBjRJZ9SANGu9DAy_LTRgEQQOjCL-WIo5SnfI8_-ve4Uxqfd1OKM-CURw/exec';
 
     fetch(urlPedidos, {
@@ -268,17 +318,19 @@ function enviarformulario(event) {
         body: JSON.stringify(pedido),
     })
     .then(() => {
-        console.log('Pedido enviado');
-        alert('¡Pedido enviado con éxito!\n\nDetalles:\nCliente: ' + nombreCliente + '\nTotal: $' + calcularTotalCarrito().toLocaleString());
-        
-        cerrarModalCliente();
-        
-        carritoCompras = [];
-        guardarCarrito();
-        actualizarContadorCarrito();
-        mostrarProductosEnCarrito();
+        setTimeout(() => {
+            ocultarSpinner();
+            console.log('Pedido enviado');
+            alert('¡Pedido enviado con éxito!\n\nDetalles:\nCliente: ' + nombreCliente + '\nTotal: $' + calcularTotalCarrito().toLocaleString());
+            
+            carritoCompras = [];
+            guardarCarrito();
+            actualizarContadorCarrito();
+            mostrarProductosEnCarrito();
+        }, 1000);
     })
     .catch((error) => {
+        ocultarSpinner();
         console.error('Error al enviar al servidor:', error);
         alert('Ocurrió un error al procesar tu pedido. Por favor, inténtalo de nuevo.');
     });
