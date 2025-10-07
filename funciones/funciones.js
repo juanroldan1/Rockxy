@@ -307,7 +307,7 @@ function enviarformulario(event) {
     // Cerrar modal antes del spinner
     cerrarModalCliente();
 
-    const urlPedidos = 'https://script.google.com/macros/s/AKfycby4w5Ea9hFFpaBjRJZ9SANGu9DAy_LTRgEQQOjCL-WIo5SnfI8_-ve4Uxqfd1OKM-CURw/exec';
+    const urlPedidos = 'https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec';
 
     fetch(urlPedidos, {
         method: 'POST',
