@@ -183,7 +183,7 @@ function añadirAlCarrito(productoId, precio, nombre) {
     guardarCarrito();
     actualizarContadorCarrito();
     mostrarProductosEnCarrito();
-    alert(`${nombre} agregado al carrito`);
+    
 }
 
 //ELIMINAR PRODUCTO
