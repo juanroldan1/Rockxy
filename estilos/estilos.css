@@ -244,6 +244,50 @@ section {
     color: #ff4757;
     margin-bottom: 1.5rem;
 }
+.precios-licor {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background-color: rgba(255, 71, 87, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.precio-item {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    color: #ff4757;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.precio-item strong {
+    color:#ff4757;
+    margin-right: 0.5rem;
+}
+
+.precio-item.no-disponible {
+    color: #999999;
+    font-style: italic;
+}
+
+.producto-licor {
+    min-height: 450px;
+}
+
+/* Responsive para precios de licores */
+@media (max-width: 768px) {
+    .precios-licor {
+        padding: 0.5rem;
+    }
+    
+    .precio-item {
+        font-size: 0.9rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+}
 
 .AñadirCarrito {
     background: linear-gradient(45deg, #ff4757, #ff6b7a);

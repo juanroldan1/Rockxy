@@ -75,6 +75,7 @@ async function mostrarCatalogoAPI() {
         }
 
         // Licores
+// Licores
         if (contenedorLicores) {
             contenedorLicores.innerHTML = '';
             const licores = productos.filter(producto => producto.Categoría === "Licores");
@@ -83,14 +84,46 @@ async function mostrarCatalogoAPI() {
             } else {
                 licores.forEach(producto => {
                     const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
+                    
+                    
+                    const precioBotella = producto.PrecioBotella || producto.Precio || null;
+                    const precioShot = producto.PrecioShot || null;
+                    const precioMedia = producto.PrecioMedia || null;
+                    
+                   
+                    let preciosHTML = '<div class="precios-licor">';
+                    
+                    if (precioBotella) {
+                        preciosHTML += `<div class="precio-item"><strong>Botella:</strong> $${Number(precioBotella).toLocaleString()}</div>`;
+                    } else {
+                        preciosHTML += '<div class="precio-item no-disponible"><strong>Botella:</strong> No disponible</div>';
+                    }
+                    
+                    if (precioShot) {
+                        preciosHTML += `<div class="precio-item"><strong>Shot:</strong> $${Number(precioShot).toLocaleString()}</div>`;
+                    } else {
+                        preciosHTML += '<div class="precio-item no-disponible"><strong>Shot:</strong> No disponible</div>';
+                    }
+                    
+                    if (precioMedia) {
+                        preciosHTML += `<div class="precio-item"><strong>Media:</strong> $${Number(precioMedia).toLocaleString()}</div>`;
+                    } else {
+                        preciosHTML += '<div class="precio-item no-disponible"><strong>Media:</strong> No disponible</div>';
+                    }
+                    
+                    preciosHTML += '</div>';
+                    
+                    
+                    const precioCarrito = precioBotella || precioShot || precioMedia || 0;
+                    
                     const div = document.createElement('div');
-                    div.className = 'producto';
+                    div.className = 'producto producto-licor';
                     div.innerHTML = `
                         <img src="${producto.Imagen || ''}" alt="${producto.Nombre}" />
                         <h4>${producto.Nombre}</h4>
-                        <p>${producto.Ingredientes}</p>
-                        <span class="precio">${Number(producto.Precio).toLocaleString()}</span>
-                        <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${producto.Precio}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
+                        <p>${producto.Ingredientes || ''}</p>
+                        ${preciosHTML}
+                        <button class="AñadirCarrito" data-producto="${productoId}" data-precio="${precioCarrito}" data-nombre="${producto.Nombre}">Añadir al carrito</button>
                     `;
                     contenedorLicores.appendChild(div);
                 });
