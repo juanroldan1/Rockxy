@@ -56,7 +56,7 @@ async function mostrarCatalogoAPI() {
             contenedorCocteles.innerHTML = '';
             const cocteles = productos.filter(producto => producto.Categoría === "Coctelería");
             if (cocteles.length === 0) {
-                contenedorCocteles.innerHTML = '<p style="color: #999;">No hay productos disponibles</p>';
+                contenedorCocteles.innerHTML = '<p>No hay productos disponibles</p>';
             } else {
                 cocteles.forEach(producto => {
                     const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
@@ -79,7 +79,7 @@ async function mostrarCatalogoAPI() {
             contenedorLicores.innerHTML = '';
             const licores = productos.filter(producto => producto.Categoría === "Licores");
             if (licores.length === 0) {
-                contenedorLicores.innerHTML = '<p style="color: #999;">No hay productos disponibles</p>';
+                contenedorLicores.innerHTML = '<p>No hay productos disponibles</p>';
             } else {
                 licores.forEach(producto => {
                     const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
@@ -102,7 +102,7 @@ async function mostrarCatalogoAPI() {
             contenedorCervezas.innerHTML = '';
             const cervezas = productos.filter(producto => producto.Categoría === "Cervezas");
             if (cervezas.length === 0) {
-                contenedorCervezas.innerHTML = '<p style="color: #999;">No hay productos disponibles</p>';
+                contenedorCervezas.innerHTML = '<p>No hay productos disponibles</p>';
             } else {
                 cervezas.forEach(producto => {
                     const productoId = producto.Nombre.toLowerCase().replace(/\s+/g, '-');
@@ -254,7 +254,7 @@ function cerrarModalCliente() {
     const modal = document.getElementById('modal-cliente');
     if (modal) {
         modal.style.display = 'none';
-        // Limpiar el formulario
+        
         document.getElementById('form-cliente').reset();
     }
 }
