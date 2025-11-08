@@ -354,7 +354,7 @@ function enviarformulario(event) {
         setTimeout(() => {
             ocultarSpinner();
             console.log('Pedido enviado');
-            alert('¡Pedido enviado con éxito!\n\nDetalles:\nCliente: ' + nombreCliente + '\nTotal: $' + calcularTotalCarrito().toLocaleString());
+            
             
             carritoCompras = [];
             guardarCarrito();
