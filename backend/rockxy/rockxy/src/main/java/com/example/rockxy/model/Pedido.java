@@ -1,4 +1,4 @@
-package main.java.com.example.rockxy.model;
+package com.example.rockxy.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

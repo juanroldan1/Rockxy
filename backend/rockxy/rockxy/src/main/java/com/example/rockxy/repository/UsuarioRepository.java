@@ -1,6 +1,6 @@
-package main.java.com.example.rockxy.repository;
+package com.example.rockxy.repository;
 
-import com.rockxy.model.Usuario;
+import com.example.rockxy.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

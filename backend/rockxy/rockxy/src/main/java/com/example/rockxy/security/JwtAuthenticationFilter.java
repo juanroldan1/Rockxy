@@ -1,4 +1,4 @@
-package main.java.com.example.rockxy.security;
+package com.example.rockxy.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

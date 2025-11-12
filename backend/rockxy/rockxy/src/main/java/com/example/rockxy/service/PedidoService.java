@@ -1,6 +1,6 @@
-package main.java.com.example.rockxy.service;
+package com.example.rockxy.service;
 
-import com.example.rockxy.dto.PedidoRequest;
+import com.example.rockxy.dtos.PedidoRequest;
 import com.example.rockxy.model.ItemPedido;
 import com.example.rockxy.model.Pedido;
 import com.example.rockxy.model.Producto;

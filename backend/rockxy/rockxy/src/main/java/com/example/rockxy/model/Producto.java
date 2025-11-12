@@ -1,4 +1,4 @@
-package com.rockxy.model;
+package com.example.rockxy.model;
 
 import jakarta.persistence.*;
 

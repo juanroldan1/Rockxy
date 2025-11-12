@@ -1,6 +1,6 @@
-package main.java.com.example.rockxy.service;
+package com.example.rockxy.service;
 
-import com.example.rockxy.dto.RegisterRequest;
+import com.example.rockxy.dtos.RegisterRequest;
 import com.example.rockxy.model.Usuario;
 import com.example.rockxy.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

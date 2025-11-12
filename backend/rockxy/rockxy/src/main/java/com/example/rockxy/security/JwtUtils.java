@@ -1,4 +1,4 @@
-package main.java.com.example.rockxy.security;
+package com.example.rockxy.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

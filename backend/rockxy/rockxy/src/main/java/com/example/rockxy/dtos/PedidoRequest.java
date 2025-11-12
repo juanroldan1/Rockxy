@@ -1,4 +1,4 @@
-package main.java.com.example.rockxy.dtos;
+package com.example.rockxy.dtos;
 
 import java.util.List;
 

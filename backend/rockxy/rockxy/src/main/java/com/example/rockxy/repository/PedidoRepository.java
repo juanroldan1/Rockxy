@@ -1,6 +1,6 @@
-package com.rockxy.repository;
+package com.example.rockxy.repository;
 
-import com.rockxy.model.Pedido;
+import com.example.rockxy.model.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

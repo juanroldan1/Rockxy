@@ -1,4 +1,4 @@
-package main.java.com.example.rockxy.security;
+package com.example.rockxy.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

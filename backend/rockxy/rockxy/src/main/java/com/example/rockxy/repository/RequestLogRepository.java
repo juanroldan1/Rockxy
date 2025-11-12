@@ -1,4 +1,4 @@
-package main.java.com.example.rockxy.repository;
+package com.example.rockxy.repository;
 
 import com.example.rockxy.model.RequestLog;
 import org.springframework.data.jpa.repository.JpaRepository;

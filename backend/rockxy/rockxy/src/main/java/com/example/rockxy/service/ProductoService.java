@@ -1,4 +1,4 @@
-package main.java.com.example.rockxy.service;
+package com.example.rockxy.service;
 
 import com.example.rockxy.model.Producto;
 import com.example.rockxy.repository.ProductoRepository;
