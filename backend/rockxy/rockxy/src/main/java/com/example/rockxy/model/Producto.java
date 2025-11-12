@@ -1,11 +1,10 @@
-package com.example.rockxy;
+package com.rockxy.model;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "productos")
 public class Producto {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,26 +16,23 @@ public class Producto {
     private String ingredientes;
     private String imagen;
 
-    private double precio;
-    private double precioBotella;
-    private double precioShot;
-    private double precioMedia;
+    private Double precio;
+    private Double precioBotella;
+    private Double precioShot;
+    private Double precioMedia;
 
-    // constructor vacio
+    @Column(nullable = false)
+    private Boolean disponible = true;
+
+    // Constructor vacío
     public Producto() {
-
     }
 
-    public Producto(String nombre, String categoria, String ingredientes, String imagen, double precio,
-            double precioBotella, double precioShot, double precioMedia) {
+    // Constructor con parámetros básicos
+    public Producto(String nombre, String categoria, Double precio) {
         this.nombre = nombre;
         this.categoria = categoria;
-        this.ingredientes = ingredientes;
-        this.imagen = imagen;
         this.precio = precio;
-        this.precioBotella = precioBotella;
-        this.precioShot = precioShot;
-        this.precioMedia = precioMedia;
     }
 
     // Getters y Setters
@@ -80,36 +76,43 @@ public class Producto {
         this.imagen = imagen;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
-    public double getPrecioBotella() {
+    public Double getPrecioBotella() {
         return precioBotella;
     }
 
-    public void setPrecioBotella(double precioBotella) {
+    public void setPrecioBotella(Double precioBotella) {
         this.precioBotella = precioBotella;
     }
 
-    public double getPrecioShot() {
+    public Double getPrecioShot() {
         return precioShot;
     }
 
-    public void setPrecioShot(double precioShot) {
+    public void setPrecioShot(Double precioShot) {
         this.precioShot = precioShot;
     }
 
-    public double getPrecioMedia() {
+    public Double getPrecioMedia() {
         return precioMedia;
     }
 
-    public void setPrecioMedia(double precioMedia) {
+    public void setPrecioMedia(Double precioMedia) {
         this.precioMedia = precioMedia;
     }
 
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
+    }
 }
