@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rockxy</title>
+    <link rel="stylesheet" href="estilos/login.css">
+</head>
+<body>
+    <!-- Spinner de carga -->
+    <div id="spinner-overlay" class="spinner-overlay">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p class="spinner-text" id="spinner-text">Iniciando sesión...</p>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="navegador">
+        <header id="header">
+            <h1>Rockxy</h1>
+            <p>Bar de Rock</p>
+        </header>
+        <nav class="barraNavegacion">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#categorias">Categorías</a></li>
+                <li><a href="carritoCompras.html">Carrito de Compras</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Iniciar Sesión</h2>
+                <p class="subtitle">Bienvenido de vuelta a Rockxy</p>
+
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" id="username" name="username" required placeholder="Ingresa tu usuario">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña">
+                    </div>
+
+                    <div id="error-message" class="error-message" style="display: none;"></div>
+
+                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Rockxy - Bar de Rock</p>
+    </footer>
+
+    <script src="funciones/login.js"></script>
+</body>
+</html>

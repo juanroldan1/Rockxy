@@ -1,0 +1,319 @@
+/* RESET Y CONFIGURACIÓN BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* NAVEGACIÓN */
+.navegador {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid #ff4757;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+#header {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+}
+
+#header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff4757;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 0.2rem;
+}
+
+#header p {
+    font-size: 1rem;
+    color: #cccccc;
+    font-style: italic;
+}
+
+.barraNavegacion {
+    padding: 0.8rem 0;
+    background-color: rgba(45, 45, 45, 0.9);
+}
+
+.barraNavegacion ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.barraNavegacion a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.barraNavegacion a:hover {
+    background: linear-gradient(45deg, #ff4757, #ff6b7a);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+}
+
+/* CONTENEDOR DE AUTENTICACIÓN */
+main {
+    margin-top: 140px;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.auth-box {
+    background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    border: 2px solid #ff4757;
+}
+
+.auth-box h2 {
+    color: #ff4757;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.subtitle {
+    color: #ffa502;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* FORMULARIO */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #ffa502;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #333333;
+    border: 1px solid #555555;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff4757;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.3);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* MENSAJES */
+.error-message {
+    background-color: rgba(231, 76, 60, 0.2);
+    border: 1px solid #e74c3c;
+    color: #ff6b6b;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.success-message {
+    background-color: rgba(46, 204, 113, 0.2);
+    border: 1px solid #2ecc71;
+    color: #2ecc71;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* BOTONES */
+.btn-primary {
+    width: 100%;
+    background: linear-gradient(45deg, #ff4757, #ff6b7a);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #ff3742, #ff5761);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* FOOTER DEL AUTH */
+.auth-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #444444;
+}
+
+.auth-footer p {
+    color: #cccccc;
+}
+
+.auth-footer a {
+    color: #ff4757;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.auth-footer a:hover {
+    color: #ff6b7a;
+    text-decoration: underline;
+}
+
+/* SPINNER */
+.spinner-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.spinner-overlay.active {
+    display: flex;
+}
+
+.spinner-container {
+    text-align: center;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.1);
+    border-top: 8px solid #ff4757;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner-text {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #0d0d0d;
+    color: #555555;
+    border-top: 1px solid #333333;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .auth-box {
+        padding: 2rem 1.5rem;
+    }
+
+    .auth-box h2 {
+        font-size: 1.8rem;
+    }
+
+    #header h1 {
+        font-size: 2rem;
+    }
+
+    .barraNavegacion ul {
+        gap: 1rem;
+    }
+
+    .barraNavegacion a {
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 1rem;
+    }
+
+    .auth-box {
+        padding: 1.5rem 1rem;
+    }
+
+    .auth-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+    }
+}

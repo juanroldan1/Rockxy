@@ -26,7 +26,7 @@ function ocultarSpinner() {
 
 //Agregar desde el JSON (API)
 async function mostrarCatalogoAPI() {
-    const url = "https://script.google.com/macros/s/AKfycbzjqCvKP-Ny1sIVSooAcVu1WXMi4oU1iIbi975jZ9T_bz9eC4dkZiP54zXts-pmE30/exec";
+    const API_URL = "http://localhost:8080/api/productos";
     
     // Mostrar spinner mientras carga
     const contenedorCocteles = document.querySelector('.cocteleria-grid');
