@@ -41,7 +41,7 @@ public class ProductoService {
                     producto.setNombre(productoActualizado.getNombre());
                     producto.setCategoria(productoActualizado.getCategoria());
                     producto.setIngredientes(productoActualizado.getIngredientes());
-                    producto.setImagen(productoActualizado.getImagen());
+                    producto.setImagenUrl(productoActualizado.getImagenUrl());
                     producto.setPrecio(productoActualizado.getPrecio());
                     producto.setPrecioBotella(productoActualizado.getPrecioBotella());
                     producto.setPrecioShot(productoActualizado.getPrecioShot());

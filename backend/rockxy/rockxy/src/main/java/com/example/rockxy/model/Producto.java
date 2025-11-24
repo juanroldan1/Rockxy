@@ -14,7 +14,8 @@ public class Producto {
 
     private String categoria;
     private String ingredientes;
-    private String imagen;
+    @Column(length = 1024)
+    private String ImagenUrl;
 
     private Double precio;
     private Double precioBotella;
@@ -68,12 +69,12 @@ public class Producto {
         this.ingredientes = ingredientes;
     }
 
-    public String getImagen() {
-        return imagen;
+    public String getImagenUrl() {
+        return ImagenUrl;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setImagenUrl(String imagen) {
+        this.ImagenUrl = imagen;
     }
 
     public Double getPrecio() {
