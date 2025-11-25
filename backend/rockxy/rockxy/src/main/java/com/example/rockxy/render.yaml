@@ -1,0 +1,16 @@
+# Archivo render.yaml en la raíz del repositorio
+services:
+  - type: web
+    name: rockxy-service
+    # Forzar el entorno de ejecución a Java
+    env: java
+    plan: starter # O el plan que estés usando
+    # Comando para construir el proyecto con Maven
+    buildCommand: "./mvnw clean install -DskipTests"
+    # Comando para iniciar la aplicación (Asumiendo Spring Boot/Jar)
+    # **Asegúrate de que este nombre de JAR sea correcto**
+    startCommand: "java -jar target/Rockxy-0.0.1-SNAPSHOT.jar"
+    envVars:
+      # Definición explícita de JAVA_HOME
+      - key: JAVA_HOME
+        value: /usr/lib/jvm/java-17-openjdk-amd64
