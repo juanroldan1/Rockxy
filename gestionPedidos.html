@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos - Rockxy</title>
+    <link rel="stylesheet" href="estilos/gestion.css">
+</head>
+<body>
+    <!-- Spinner de carga -->
+    <div id="spinner-overlay" class="spinner-overlay">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p class="spinner-text" id="spinner-text">Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="navegador">
+        <header id="header">
+            <h1>Rockxy</h1>
+            <p>Panel de Gestión de Pedidos</p>
+        </header>
+        <nav class="barraNavegacion">
+            <ul>
+                <li><a href="index.html">🏠 Inicio</a></li>
+                <li><a href="gestion-pedidos.html" class="active">📋 Gestión de Pedidos</a></li>
+                <li><a href="#" onclick="logout(); return false;">🚪 Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <div class="gestion-container">
+            <!-- Header con estadísticas -->
+            <div class="stats-container">
+                <div class="stat-card pendiente">
+                    <h3>Pendientes</h3>
+                    <p class="stat-number" id="total-pendientes">0</p>
+                </div>
+                <div class="stat-card proceso">
+                    <h3>En Proceso</h3>
+                    <p class="stat-number" id="total-proceso">0</p>
+                </div>
+                <div class="stat-card completado">
+                    <h3>Completados</h3>
+                    <p class="stat-number" id="total-completados">0</p>
+                </div>
+                <div class="stat-card total">
+                    <h3>Total de Pedidos</h3>
+                    <p class="stat-number" id="total-pedidos">0</p>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filtros-container">
+                <h2>Filtrar Pedidos</h2>
+                <div class="filtros-group">
+                    <div class="filtro-item">
+                        <label for="filtro-estado">Estado:</label>
+                        <select id="filtro-estado" onchange="filtrarPedidos()">
+                            <option value="TODOS">Todos</option>
+                            <option value="PENDIENTE">Pendiente</option>
+                            <option value="EN_PROCESO">En Proceso</option>
+                            <option value="COMPLETADO">Completado</option>
+                            <option value="CANCELADO">Cancelado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filtro-item">
+                        <label for="filtro-cliente">Buscar Cliente:</label>
+                        <input type="text" id="filtro-cliente" placeholder="Nombre del cliente..." oninput="filtrarPedidos()">
+                    </div>
+                    
+                    <button class="btn-refrescar" onclick="cargarPedidos()">🔄 Refrescar</button>
+                </div>
+            </div>
+
+            <!-- Lista de pedidos -->
+            <div class="pedidos-container">
+                <h2>Lista de Pedidos</h2>
+                <div id="lista-pedidos" class="lista-pedidos">
+                    <!-- Los pedidos se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para ver detalles del pedido -->
+    <div id="modal-detalle" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModalDetalle()">&times;</span>
+            <h2>Detalles del Pedido</h2>
+            <div id="detalle-pedido">
+                <!-- Los detalles se cargarán aquí -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Rockxy - Sistema de Gestión de Pedidos</p>
+    </footer>
+
+    <script src="funciones/login.js"></script>
+    <script src="funciones/gestion.js"></script>
+</body>
+</html>
