@@ -13,19 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rockxy</name>
 	<description>Demo project for Spring Boot</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -56,25 +43,30 @@
     </dependency>
     <dependency>
         <groupId>io.jsonwebtoken</groupId>
-        <artifactId>jjwt-jackson</artifactId> <!-- o jjwt-gson -->
+        <artifactId>jjwt-jackson</artifactId>
         <version>0.11.5</version>
         <scope>runtime</scope>
     </dependency>
 
-    <!-- JPA + H2 o tu base de datos -->
+    <!-- JPA -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
-    <!-- Driver para tu BD (ej: PostgreSQL o MySQL) -->
-    
+    <!-- PostgreSQL Driver - ¡NUEVO! -->
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+
+    <!-- H2 Database (SOLO PARA DESARROLLO LOCAL) -->
     <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
         <scope>runtime</scope>
     </dependency>
-    
 
     <!-- Dependencias de test -->
     <dependency>
@@ -83,7 +75,6 @@
         <scope>test</scope>
     </dependency>
 </dependencies>
-
 
 	<build>
 		<plugins>
