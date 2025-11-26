@@ -1,41 +1,15 @@
-# render.yaml - Configuración del servicio de la API Rockxy
 services:
-  # --- Definición del Servicio Web ---
   - type: web
-    name: rockxy-backend # Nombre del servicio en Render
+    name: rockxy
+    runtime: docker
+    repo: https://github.com/juanroldan1/Rockxy
+    plan: free
+    region: ohio # puedes cambiarlo si quieres
+    dockerfilePath: ./Dockerfile
 
-    # 1. ESENCIAL: Define el entorno como Java (esto corrige la detección de Node.js)
-    env: java
-
-    # Puedes elegir la región que prefieras (ej: oregon, frankfurt)
-    region: oregon
-
-    # Plan de servicio (starter para proyectos pequeños, standard para mayor rendimiento)
-    plan: starter
-
-    # --- Comandos de Despliegue ---
-
-    # Comando de compilación: Limpia, compila e instala, saltando las pruebas.
-    buildCommand: "./mvnw clean install -DskipTests"
-
-    # Comando de inicio: Ejecuta el archivo JAR que Maven generó.
-    # ¡DEBES VERIFICAR ESTE NOMBRE DE ARCHIVO!
-    startCommand: "java -jar backend/rockxy/rockxy/target/rockxy-0.0.1-SNAPSHOT.jar"
-
-    # --- Variables de Entorno ---
     envVars:
-      # 2. ESENCIAL: Fuerza el uso de Java 17, resolviendo el error de JAVA_HOME
-      - key: JAVA_VERSION
-        value: 17
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
 
-      # Configuración del puerto
-      - key: PORT
-        value: 8080
-
-      # Variables Secretas (Mantén tus valores aquí)
-      - key: JWT_EXPIRATION
-        value: 86400000
-      - key: JWT_SECRET
-        value: rockxy123
-
-buildCommand: "apt-get update && apt-get install -y openjdk-17-jdk-headless && ./mvnw clean install -DskipTests"
+    healthCheckPath: /
+    autoDeploy: true
