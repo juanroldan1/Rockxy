@@ -5,13 +5,21 @@ services:
     plan: free
     # Ruta al backend en tu repositorio
     rootDir: backend/rockxy/rockxy
-    buildCommand: ./mvnw clean install -DskipTests
+    # Comando de build con Java 17
+    buildCommand: |
+      export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+      export PATH=$JAVA_HOME/bin:$PATH
+      ./mvnw clean install -DskipTests
+    # Comando de inicio
     startCommand: java -jar target/rockxy-0.0.1-SNAPSHOT.jar
+    # Variables de entorno
     envVars:
       - key: JAVA_VERSION
         value: "17"
       - key: PORT
         value: "8080"
+      - key: JAVA_HOME
+        value: /usr/lib/jvm/java-17-openjdk-amd64
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION
