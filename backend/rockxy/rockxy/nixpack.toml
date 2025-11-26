@@ -1,0 +1,17 @@
+# nixpacks.toml
+
+# 1. Fase de Configuración (Setup): Instala JDK 17 y Maven
+[phases.setup]
+nixPkgs = ["jdk17", "maven"] 
+
+# 2. Fase de Compilación (Build): Ejecuta tu comando de Maven
+[phases.build]
+cmds = [
+  "cd backend/rockxy/rockxy",
+  # JAVA_HOME estará configurado automáticamente después de la fase 'setup'
+  "./mvnw clean install -DskipTests" 
+]
+
+# 3. Fase de Inicio (Start): Ejecuta tu aplicación
+[start]
+cmd = "cd backend/rockxy/rockxy && java -jar target/*.jar"
