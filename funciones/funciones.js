@@ -26,7 +26,7 @@ function ocultarSpinner() {
 
 // ========== CARGAR PRODUCTOS DESDE EL BACKEND ==========
 async function mostrarCatalogoAPI() {
-    const API_URL = window.API_URL || 'http://localhost:8080/api';
+    const API_URL = "https://rockxy-production.up.railway.app/api";
     const url = `${API_URL}/productos`;
     
     // Mostrar spinner mientras carga
