@@ -2,25 +2,18 @@ services:
   - type: web
     name: rockxy-backend
     env: java
-    plan: free
-    # Ruta al backend en tu repositorio
-    rootDir: backend/rockxy/rockxy
-    # Comando de build con Java 17
-    buildCommand: |
-      export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-      export PATH=$JAVA_HOME/bin:$PATH
-      ./mvnw clean install -DskipTests
-    # Comando de inicio
-    startCommand: java -jar target/rockxy-0.0.1-SNAPSHOT.jar
-    # Variables de entorno
+    plan: standard # Puedes elegir 'starter' si es una aplicación pequeña
+
+    # 1. Fuerza el uso de Java 17 en el entorno
     envVars:
       - key: JAVA_VERSION
-        value: "17"
-      - key: PORT
-        value: "8080"
-      - key: JAVA_HOME
-        value: /usr/lib/jvm/java-17-openjdk-amd64
-      - key: JWT_SECRET
-        generateValue: true
-      - key: JWT_EXPIRATION
-        value: "86400000"
+        value: 17
+
+    # 2. Comando de compilación (el que ya estás usando)
+    buildCommand: "./mvnw clean install -DskipTests"
+
+    # 3. Comando de inicio de la aplicación
+    # **IMPORTANTE:** Debes reemplazar 'NOMBRE_DE_TU_JAR.jar' con el nombre exacto
+    # del archivo .jar que produce Maven.
+    # Por lo general, sigue el formato: tu-proyecto-0.0.1-SNAPSHOT.jar
+    startCommand: "java -jar target/NOMBRE_DE_TU_JAR.jar"
