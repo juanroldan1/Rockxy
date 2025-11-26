@@ -1,19 +1,43 @@
+# render.yaml - Configuración del servicio de la API Rockxy
 services:
+  # --- Definición del Servicio Web ---
   - type: web
-    name: rockxy-backend
-    env: java
-    plan: standard # Puedes elegir 'starter' si es una aplicación pequeña
+    name: rockxy-backend # Nombre que Render usará para el servicio
 
-    # 1. Fuerza el uso de Java 17 en el entorno
+    # 1. ESENCIAL: Define el entorno como Java (esto soluciona la detección de Node.js)
+    env: java
+
+    # Define tu región de preferencia (ej: oregon, frankfurt, etc.)
+    region: oregon
+
+    # Define el plan de servicio (cambia a 'standard' si necesitas más recursos)
+    plan: starter
+
+    # --- Comandos de Despliegue ---
+
+    # Comando de compilación: Limpia, compila e instala, saltando las pruebas.
+    buildCommand: "./mvnw clean install -DskipTests"
+
+    # Comando de inicio: Ejecuta el archivo JAR que Maven generó.
+    # *** IMPORTANTE: DEBES REEMPLAZAR 'nombre-del-jar-generado.jar' ***
+    # Búscalo en tu compilación local, generalmente es target/tu-artefacto-version.jar
+    startCommand: "java -jar target/rockxy-0.0.1-SNAPSHOT.jar"
+
+    # --- Variables de Entorno ---
     envVars:
+      # 2. ESENCIAL: Fuerza el uso de Java 17, resolviendo el error de JAVA_HOME
       - key: JAVA_VERSION
         value: 17
 
-    # 2. Comando de compilación (el que ya estás usando)
-    buildCommand: "./mvnw clean install -DskipTests"
+      # Configuración del puerto
+      - key: PORT
+        value: 8080
 
-    # 3. Comando de inicio de la aplicación
-    # **IMPORTANTE:** Debes reemplazar 'NOMBRE_DE_TU_JAR.jar' con el nombre exacto
-    # del archivo .jar que produce Maven.
-    # Por lo general, sigue el formato: tu-proyecto-0.0.1-SNAPSHOT.jar
-    startCommand: "java -jar target/NOMBRE_DE_TU_JAR.jar"
+      # Variables Secretas que ya tenías
+      - key: JWT_EXPIRATION
+        value: # Tu valor de expiración
+      - key: JWT_SECRET
+        value: # Tu clave secreta
+
+
+      # *** Añade aquí cualquier otra variable de configuración de base de datos o API ***
