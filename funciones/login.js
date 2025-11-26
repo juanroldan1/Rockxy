@@ -1,5 +1,5 @@
 // URL del backend - CAMBIAR en producción
-const API_URL = 'http://localhost:8080/api';
+const API_URL = window.API_URL || 'http://localhost:8080/api';
 
 // ========== FUNCIONES DEL SPINNER ==========
 function mostrarSpinner(texto = 'Cargando...') {

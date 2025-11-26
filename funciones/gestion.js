@@ -2,7 +2,7 @@
 // SISTEMA DE GESTIÓN DE PEDIDOS - ROCKXY
 // ====================================================
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = window.API_URL || 'http://localhost:8080/api';
 let todosLosPedidos = [];
 let pedidosFiltrados = [];
 

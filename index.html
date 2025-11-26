@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rockxy - Catálogo Interactivo</title>
+    <meta name="description" content="Rockxy - El mejor bar de rock en Chapinero, Bogotá. Cocteles temáticos, música en vivo y ambiente rock.">
+    <meta name="keywords" content="bar rock, Chapinero, Bogotá, cocteles, música en vivo">
+    <title>Rockxy - Bar de Rock en Chapinero</title>
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="estilos/estilos.css">
+    
+    <!-- Scripts - ¡IMPORTANTE! config.js debe ir PRIMERO -->
+    <script src="funciones/config.js"></script>
     <script src="funciones/funciones.js"></script>
 </head>
 <body>
-    <!--Carga productos-->
-     <div id="spinner-overlay" class="spinner-overlay">
+    <!-- Spinner de carga de productos -->
+    <div id="spinner-overlay" class="spinner-overlay">
         <div class="spinner-container">
             <div class="spinner"></div>
-            <p class="spinner-text" id="spinner-text">Cargando...</p>
+            <p class="spinner-text" id="spinner-text">Cargando productos...</p>
         </div>
     </div>
-    <!-- Navegación -->
+
+    <!-- Navegación Fija -->
     <div class="navegador">
         <header id="header">
             <h1>Rockxy</h1>
@@ -23,92 +31,197 @@
         </header>
         <nav class="barraNavegacion">
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#categorias">Categorías</a></li>
-                <li><a href="carritoCompras.html">
-                    Carrito de Compras 
-                    <span id="contador-carrito" class="contador-carrito" style="display: none;">0</span>
-                </a></li>
-                <li><a href="#equipo">Nuestro Equipo</a></li>
-                <li><a href="login.html">👤 iniciar sesion</a></li>
-                
+                <li><a href="#inicio">🏠 Inicio</a></li>
+                <li><a href="#categorias">📋 Categorías</a></li>
+                <li>
+                    <a href="carritoCompras.html">
+                        🛒 Carrito
+                        <span id="contador-carrito" class="contador-carrito" style="display: none;">0</span>
+                    </a>
+                </li>
+                <li><a href="#equipo">👥 Nuestro Equipo</a></li>
+                <li><a href="login.html">👤 Iniciar Sesión</a></li>
             </ul>
         </nav>
-    </div
+    </div>
+
+    <!-- Contenido Principal -->
     <main>
-        <!-- Página de inicio -->
+        <!-- ========== SECCIÓN INICIO ========== -->
         <section id="inicio">
             <div class="presentacion">
                 <h2>Bienvenidos a Rockxy</h2>
                 <h3>El mejor bar de rock de la ciudad</h3>
-                <p>En Rockxy vivimos y respiramos rock. Somos más que un bar, somos un santuario para los amantes de la música rock donde cada noche es una experiencia única.</p>
+                <p>
+                    En Rockxy vivimos y respiramos rock. Somos más que un bar, somos un 
+                    santuario para los amantes de la música rock donde cada noche es una 
+                    experiencia única llena de buena música, excelentes bebidas y el mejor ambiente.
+                </p>
                 
                 <div class="propuesta-comercial">
-                    <h4>Nuestra Propuesta</h4>
-                    <p>Ofrecemos una experiencia musical completa con la mejor música rock en vivo, cocteles temáticos inspirados en grandes bandas, un ambiente auténtico que te transportará al corazón del rock and roll.</p>
-                    <p>Disfruta de nuestros servicio en el local para que no te pierdas de la experiencia Rockxy.</p>
+                    <h4>🎸 Nuestra Propuesta</h4>
+                    <p>
+                        Ofrecemos una experiencia musical completa con la mejor música rock en vivo, 
+                        cocteles temáticos inspirados en grandes bandas, y un ambiente auténtico que 
+                        te transportará al corazón del rock and roll.
+                    </p>
+                    <p>
+                        <strong>Ubicación:</strong> Chapinero, Bogotá - El corazón del rock colombiano
+                    </p>
+                    <p>
+                        Disfruta de nuestro servicio en el local para que no te pierdas de la 
+                        experiencia Rockxy. ¡Únete a la revolución del rock!
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Categorías de productos -->
+        <!-- ========== SECCIÓN CATEGORÍAS DE PRODUCTOS ========== -->
         <section id="categorias">
             <div class="categorias-container">
-                <h2>Nuestras Categorías</h2>
+                <h2>🍹 Nuestro Menú</h2>
                 
-                <!-- Categoría Cócteles Rock -->
+                <!-- ===== COCTELERÍA ===== -->
                 <div class="categoria">
-                    <h3>Coctelería</h3>
+                    <h3>🍸 Coctelería Rock</h3>
+                    <p style="text-align: center; color: #cccccc; margin-bottom: 2rem;">
+                        Cocteles inspirados en las grandes leyendas del rock
+                    </p>
                     <div class="productos-grid cocteleria-grid">
-                        <!-- Los productos se cargarán aquí automáticamente -->
+                        <!-- Los productos se cargarán aquí automáticamente desde el backend -->
+                        <div class="productos-loading">
+                            <div class="spinner-small"></div>
+                            <p>Cargando cocteles...</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- ===== LICORES ===== -->
                 <div class="categoria">
-                    
-    <h3>Licores</h3>
+                    <h3>🥃 Licores Premium</h3>
+                    <p style="text-align: center; color: #cccccc; margin-bottom: 2rem;">
+                        Selección exclusiva de whisky, ron, tequila y más
+                    </p>
                     <div class="productos-grid licores-grid">
-                        <!-- Los productos se cargarán aquí automáticamente -->
+                        <!-- Los productos se cargarán aquí automáticamente desde el backend -->
+                        <div class="productos-loading">
+                            <div class="spinner-small"></div>
+                            <p>Cargando licores...</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- ===== CERVEZAS ===== -->
                 <div class="categoria">
-                    <h3>Cervezas</h3>
-        <div class="productos-grid cervezas-grid">
-            <!-- Los productos se cargarán aquí automáticamente -->
+                    <h3>🍺 Cervezas</h3>
+                    <p style="text-align: center; color: #cccccc; margin-bottom: 2rem;">
+                        Las mejores cervezas nacionales e importadas
+                    </p>
+                    <div class="productos-grid cervezas-grid">
+                        <!-- Los productos se cargarán aquí automáticamente desde el backend -->
+                        <div class="productos-loading">
+                            <div class="spinner-small"></div>
+                            <p>Cargando cervezas...</p>
+                        </div>
+                    </div>
                 </div>
-    <div class="productos-grid">
-        <!-- Los productos se cargarán aquí automáticamente -->
-</div>
+            </div>
+        </section>
+
+        <!-- ========== SECCIÓN EQUIPO ========== -->
+        <section id="equipo">
+            <div class="equipo-container">
+                <h2>👨‍💻 Equipo de Desarrollo</h2>
+                <p style="text-align: center; color: #cccccc; margin-bottom: 3rem;">
+                    Proyecto Final - Desarrollo de Aplicaciones Web
+                </p>
                 
-                
-                
+                <div class="miembros-equipo">
+                    <div class="miembro">
+                        <img src="https://ui-avatars.com/api/?name=Juan+Sanchez&size=250&background=ff4757&color=fff&bold=true" 
+                             alt="Juan David Sanchez Roldán">
+                        <h3>Juan David Sanchez Roldán</h3>
+                        <p><strong>Código:</strong> 340321</p>
+                        <p>💻 Frontend Developer</p>
+                        <p style="color: #999; font-size: 0.9rem;">
+                            Responsable del diseño y desarrollo de la interfaz de usuario
+                        </p>
+                    </div>
+                    
+                    <div class="miembro">
+                        <img src="https://ui-avatars.com/api/?name=Felipe+Franco&size=250&background=ffa502&color=fff&bold=true" 
+                             alt="Felipe Franco Jaime">
+                        <h3>Felipe Franco Jaime</h3>
+                        <p><strong>Código:</strong> 272153</p>
+                        <p>⚙️ Backend Developer</p>
+                        <p style="color: #999; font-size: 0.9rem;">
+                            Responsable del desarrollo de la API REST y base de datos
+                        </p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 71, 87, 0.1); border-radius: 15px;">
+                    <h4 style="color: #ff4757; margin-bottom: 1rem;">🎓 Información del Proyecto</h4>
+                    <p style="color: #cccccc;">
+                        <strong>Curso:</strong> Desarrollo de Aplicaciones Web<br>
+                        <strong>Institución:</strong> Universidad de tu institución<br>
+                        <strong>Año:</strong> 2025
+                    </p>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <section id="equipo">
-            <div class="equipo-container">
-                <h2>Nuestro Equipo Desarrollador</h2>
-                <div class="miembros-equipo">
-                    <div class="miembro">
-                        <h3>Juan David Sanchez Roldán</h3>
-                        <p>Código: 340321</p>
-                        <p>Frontend Developer</p>
-                    </div>
-                    
-                    <div class="miembro">
-                        <h3>Felipe Franco Jaime</h3>
-                        <p>Código: 272153</p>
-                        <p>Backend Developer</p>
-                    </div>
-                </div>
-            </div>
-        </section>
         <div class="footer-container">
-            <p>© 2025 Rockxy - Bar de Rock en Chapinero, Bogotá</p>
-            <p>Proyecto de Desarrollo Web - Corte 1</p>
+            <div style="margin-bottom: 1rem;">
+                <p style="font-size: 1.1rem; color: #ff4757; font-weight: bold;">
+                    🎸 Rockxy - Bar de Rock
+                </p>
+                <p style="color: #cccccc;">
+                    📍 Chapinero, Bogotá, Colombia
+                </p>
+            </div>
+            
+            <div style="border-top: 1px solid #333; padding-top: 1rem; margin-top: 1rem;">
+                <p style="font-size: 0.9rem;">
+                    © 2025 Rockxy. Todos los derechos reservados.
+                </p>
+                <p style="font-size: 0.85rem; color: #666;">
+                    Proyecto de Desarrollo Web - Corte 1
+                </p>
+            </div>
         </div>
     </footer>
+
+    <!-- Scripts adicionales (si necesitas agregar más funcionalidad) -->
+    <script>
+        // Log inicial
+        console.log('🎸 Rockxy - Página Cargada');
+        console.log('📍 API URL:', window.API_URL);
+        
+        // Scroll suave para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Verificar si el usuario está logueado al cargar
+        window.addEventListener('load', function() {
+            const username = sessionStorage.getItem('username');
+            if (username) {
+                console.log('👤 Usuario activo:', username);
+            }
+        });
+    </script>
 </body>
 </html>

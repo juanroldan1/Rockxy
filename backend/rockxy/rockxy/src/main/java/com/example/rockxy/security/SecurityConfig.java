@@ -87,14 +87,14 @@ public class SecurityConfig {
         public CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration configuration = new CorsConfiguration();
 
-                // ✅ Permitir múltiples orígenes (frontend)
+                // ✅ Permitir orígenes de desarrollo Y producción
                 configuration.setAllowedOrigins(Arrays.asList(
                                 "http://localhost:5500",
                                 "http://127.0.0.1:5500",
                                 "http://localhost:8080",
                                 "http://127.0.0.1:8080",
-                                "http://localhost:3000", // Por si usas React/Vue
-                                "*" // ⚠️ SOLO para desarrollo, quitar en producción
+                                "https://rockxy-frontend.onrender.com", // Tu frontend en Render
+                                "https://*.onrender.com" // Cualquier subdominio de Render
                 ));
 
                 // ✅ Métodos HTTP permitidos
