@@ -34,9 +34,8 @@ services:
 
       # Variables Secretas (Mantén tus valores aquí)
       - key: JWT_EXPIRATION
-        value: # Tu valor de expiración
+        value: 86400000
       - key: JWT_SECRET
-        value: # Tu clave secreta
+        value: rockxy123
 
-
-      # *** Asegúrate de añadir aquí cualquier otra variable de DB o credenciales ***
+buildCommand: "apt-get update && apt-get install -y openjdk-17-jdk-headless && ./mvnw clean install -DskipTests"
