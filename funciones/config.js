@@ -9,9 +9,6 @@ const API_URL = (() => {
         return 'http://localhost:8080/api';
     }
     
-    // Producción en Railway
-    // Cambia esta URL por la URL real de tu backend en Railway
-    // Ejemplo: 'https://rockxy-backend-production.up.railway.app/api'
     return 'rockxy-production.up.railway.app';
 })();
 
